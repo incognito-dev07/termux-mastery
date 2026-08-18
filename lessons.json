@@ -1,0 +1,493 @@
+{
+  "beginner-sections": {
+    "what-is-terminal": {
+      "title": "What is a Terminal?",
+      "icon": "fa-question-circle",
+      "items": [
+        {
+          "title": "What is a Terminal?",
+          "description": "Think of Termux as a text-only way to control your phone. Instead of tapping buttons, you type commands. When you press Enter, the command runs.",
+          "code": "+-----------------------------------+\n|  YOU TYPE:    hello                               \n|  YOU PRESS:   [Enter]                             \n|  COMPUTER:    \"command not found\"\n+-----------------------------------+\n\n# Don't worry about errors - they are just the computer saying \"I don't understand that word\""
+        },
+        {
+          "title": "Your First Command",
+          "description": "Before installing anything, you need to update Termux's list of available apps. This is like refreshing a webpage.",
+          "code": "pkg update\n\n# EXPLANATION:\n# \"pkg\" = package manager (the app store inside Termux)\n# \"update\" = refresh the list of available software\n\n# After typing, press ENTER. When asked \"Do you want to continue?\" type Y and press ENTER."
+        },
+        {
+          "title": "Understanding the Prompt",
+          "description": "The text before your cursor tells you where you are in the file system. This is called the 'prompt'.",
+          "code": "~ $     \n\n# This means:\n# \"~\" (tilde) = You are in your home folder\n# \"$\" = Ready for your command\n\n~/storage $ \n\n# This means you are now in the 'storage' folder inside your home folder.\n# The prompt always tells you your current location."
+        }
+      ]
+    },
+    "how-commands-work": {
+      "title": "How Commands Work",
+      "icon": "fa-cogs",
+      "items": [
+        {
+          "title": "The Command Pattern",
+          "description": "Every terminal command follows a simple pattern: COMMAND followed by WHAT TO ACT ON.",
+          "code": "ls              # lists files\nls Documents    # lists files in Documents\ncp file.txt backup/  # cp + source + destination\n\n# Think of it like English sentences:\n# \"Show me\" (ls) \"the files\" (no target needed)\n# \"Copy\" (cp) \"this file\" (file.txt) \"to that folder\" (backup/)"
+        },
+        {
+          "title": "Step-by-Step: Navigate Folders",
+          "description": "Type each line and press Enter. Read the explanation before moving to the next.",
+          "code": "# STEP 1: Where am I?\npwd\n# Shows: /data/data/com.termux/files/home\n\n# STEP 2: What is here?\nls\n# Probably nothing yet - that is fine\n\n# STEP 3: Create a practice folder\nmkdir practice\n\n# STEP 4: Go INTO that folder\ncd practice\n\n# STEP 5: Check you moved\npwd\n# Now shows: .../home/practice\n\n# STEP 6: Go back home\ncd ~\n# The \"~\" means \"home folder\""
+        },
+        {
+          "title": "Making Your First File",
+          "description": "Create and edit a text file - your first real interaction with the terminal.",
+          "code": "# Create an empty file\ntouch mynote.txt\n\n# List files to see it\nls\n# You should see: mynote.txt\n\n# Edit the file (Nano is a simple editor)\nnano mynote.txt\n\n# INSIDE NANO:\n# - Just type some words like \"Hello Termux\"\n# - Press Ctrl + O (letter O, not zero) to SAVE\n# - Press Enter to confirm filename\n# - Press Ctrl + X to EXIT\n\n# View what you wrote\ncat mynote.txt"
+        }
+      ]
+    },
+    "essential-commands": {
+      "title": "Essential Commands",
+      "icon": "fa-star",
+      "items": [
+        {
+          "title": "The Three Most Important Commands",
+          "description": "Memorize these. You will use them constantly.",
+          "code": "ls  = \"What is here?\" - Lists all files and folders\ncd  = \"Go there\" - Moves you into a different folder\npwd = \"Where am I?\" - Shows your current location\n\n# REAL EXAMPLE:\npwd              # Shows where you are\nls               # Shows what is here\ncd practice      # Go into practice folder\npwd              # Shows new location\nls               # Shows files in practice\ncd ..            # Go back (.. means parent folder)"
+        },
+        {
+          "title": "Common Beginner Mistakes",
+          "description": "Everyone makes these. Do not feel bad when you see errors.",
+          "code": "MISTAKE 1: Forgetting spaces\nWRONG: pwdDocuments\nRIGHT: pwd Documents\n\nMISTAKE 2: Wrong capitalization\nWRONG: Ls\nRIGHT: ls\n\nMISTAKE 3: Command doesn't exist\nWRONG: delet file.txt\nRIGHT: rm file.txt\n\nMISTAKE 4: Wrong folder\nWRONG: cat mynote.txt (file doesn't exist in current folder)\nRIGHT: Use 'ls' first to see what files exist"
+        },
+        {
+          "title": "Getting Help",
+          "description": "When stuck, Termux has built-in help systems.",
+          "code": "# Most commands have a --help option\nls --help\n\n# Or use \"man\" (manual pages)\npkg install man\nman ls\n# Press Q to exit the manual\n\n# Command history\nhistory\n# Re-run command number 5\n!5"
+        }
+      ]
+    },
+    "mini-project": {
+      "title": "Mini Project",
+      "icon": "fa-project-diagram",
+      "items": [
+        {
+          "title": "Your First Mini Project: A Journal",
+          "description": "Put everything together. Create a daily journal to practice what you learned.",
+          "code": "# 1. Create a journal folder\nmkdir journal\n\n# 2. Go into the folder\ncd journal\n\n# 3. Create today's entry\nnano 2026-04-08.txt\n\n# 4. Write your entry, then Ctrl+O to save, Ctrl+X to exit\n\n# 5. Read your entry\ncat 2026-04-08.txt\n\n# 6. Make a backup\ncp 2026-04-08.txt backup.txt\n\n# 7. See all entries with details\nls -la\n\n# You just used: mkdir, cd, nano, cat, cp, ls -la"
+        },
+        {
+          "title": "What To Do Next",
+          "description": "You have completed the beginner guide. Here is your learning path.",
+          "code": "# WHAT YOU LEARNED:\n# - What a terminal is\n# - How to read the prompt\n# - Navigation: pwd, ls, cd\n# - File operations: touch, nano, cat, cp\n# - How to get help\n\n# NEXT STEPS:\n# Go back to the main guide and explore:\n# - Getting Started\n# - Basic Commands\n# - Package Management\n\n# CHALLENGE:\n# Create a folder called \"projects\"\n# Inside, create \"hello.txt\" with your name\n# Make a copy called \"hello_backup.txt\"\n# List both files"
+        }
+      ]
+    }
+  },
+  "main-sections": {
+    "getting-started": {
+      "title": "Getting Started",
+      "icon": "fa-rocket",
+      "items": [
+        {
+          "title": "Where to Download Termux",
+          "description": "The Google Play Store version is abandoned and broken. Use F-Droid version instead.",
+          "code": "# CORRECT SOURCE: F-Droid\nhttps://f-droid.org/en/packages/com.termux/\n\n# Do not use the Play Store version as it is deprecated and without updates.\n\n# After installing, open Termux and wait. The first launch takes 10-30 seconds to set up."
+        },
+        {
+          "title": "First Launch and Initial Setup",
+          "description": "When Termux first opens, you will see a black screen with white text and a $ symbol. This is normal.",
+          "code": "# YOUR FIRST ACTION: Update everything\npkg update\n# When asked \"Do you want to continue?\" type Y and press Enter\n\npkg upgrade\n# Again, type Y when asked\n\n# This updates Termux to the latest version. Always do this first."
+        },
+        {
+          "title": "Grant Storage Access",
+          "description": "Termux needs permission to see your Android files like photos, downloads, and documents.",
+          "code": "# Type this command:\ntermux-setup-storage\n\n# Now you can access your Android files at: ~/storage/shared/\n\n# To verify:\nls ~/storage/shared/Download/"
+        },
+        {
+          "title": "Verify Everything Works",
+          "description": "Run these tests to confirm your Termux installation is correct.",
+          "code": "# TEST 1: Check Termux version\npkg --version\n\n# TEST 2: Check storage access\nls ~/storage/shared/\n\n# TEST 3: Create and read a test file\necho \"Termux is working\" > test.txt\ncat test.txt\n\n# TEST 4: Check network connectivity\nping -c 2 google.com\n\n# If all tests pass, your Termux is ready."
+        },
+        {
+          "title": "Understanding Termux Storage",
+          "description": "Termux has its own private storage separate from Android. This is for security.",
+          "code": "# TERMUX PRIVATE STORAGE:\n/data/data/com.termux/files/home/ # your home folder\n# Other apps cannot see this folder.\n\n# ANDROID SHARED STORAGE:\n~/storage/shared/ # access to your phone's storage\n# Both Termux and Android apps can access this.\n\n# WHY THIS MATTERS:\n# - Files you create go to Termux private storage by default\n# - To share files with other apps, copy them to ~/storage/shared/\n# - Example: \ncp myfile.txt ~/storage/shared/Documents/"
+        },
+        {
+          "title": "Setting Up Your Environment",
+          "description": "Optional but recommended - customize Termux for a better experience.",
+          "code": "# ENABLE EXTRA KEYS ROW:\necho 'extra-keys = [[\"ESC\",\"CTRL\",\"ALT\",\"LEFT\",\"RIGHT\",\"UP\",\"DOWN\"]]' > ~/.termux/termux.properties\ntermux-reload-settings\n\n# INSTALL A BETTER EDITOR (optional):\npkg install vim\n\n# CHANGE COLOR SCHEME:\nmkdir -p ~/.termux\nnano ~/.termux/colors.properties\n\n# Add this for a dark theme:\nbackground=black\nforeground=white\n\n# Save and restart Termux."
+        }
+      ]
+    },
+    "basic-commands": {
+      "title": "Basic Commands",
+      "icon": "fa-terminal",
+      "items": [
+        {
+          "title": "pwd - Where Am I?",
+          "description": "Shows your exact location in the file system. Use this whenever you feel lost.",
+          "code": "pwd  # Print Working Directory\n\n# WHEN TO USE:\n# - When you first open Termux\n# - Before deleting files\n# - When a command says \"No such file or directory\"\n\n# EXAMPLE OUTPUT:\n# /data/data/com.termux/files/home\n\n# TIP: If you get lost, type 'cd ~' to go home, then 'pwd' to confirm."
+        },
+        {
+          "title": "ls - What Is Here?",
+          "description": "Lists all files and folders in your current location.",
+          "code": "ls        # Basic file list (names only)\nls -la     # Shows all files in long format (including hidden ones)\nls Documents/   # List contents of a folder\nls *.txt        # List only .txt files \n\n# EXAMPLE OUTPUT of 'ls -la':\n# drwx---- 2 user group 4096 Jan 15 10:30 .\n# -rw----- 1 user group   12 Jan 15 10:30 mynote.txt\n# 'd' means directory. '-' means regular file."
+        },
+        {
+          "title": "cd - Go There",
+          "description": "Moves you into different folders.",
+          "code": "cd practice   # Go to 'practice' folder\ncd ..         # Go to previous folder\ncd ~          # Go to your home folder\ncd /          # Go to the root of the entire file system\ncd            # same as cd ~\n\n# TIP: Tab completion - Type 'cd Docu' then press Tab - it completes to 'cd Documents/'"
+        },
+        {
+          "title": "mkdir - Create Folders",
+          "description": "Creates new folders to organize your files.",
+          "code": "mkdir projects       # Create a folder named 'projects'\nmkdir -m 755 folder   # Create folder with specific permissions\nmkdir folder1 folder2 folder3  # Create multiple folders at once\n\n# BEST PRACTICES:\n# - Use lowercase names (Linux is case-sensitive)\n# - No spaces (use underscores or hyphens: 'my_folder' or 'my-folder')"
+        },
+        {
+          "title": "touch - Create Empty Files",
+          "description": "Creates an empty file or updates a file's timestamp.",
+          "code": "touch README.md        # Create an empty file\ntouch file1.txt file2.txt file3.txt  # Create multiple files\ntouch -t 202401151230 file.txt  # Set specific timestamp"
+        },
+        {
+          "title": "cat - Read Files",
+          "description": "Displays the entire contents of a file.",
+          "code": "cat mynote.txt      # Show everything in mynote.txt\ncat file1.txt file2.txt  # Show both files one after another\ncat -n filename.txt   # Show with line numbers\n\n# LIMITATION: 'cat' shows the ENTIRE file. For long files, use 'tail' or 'head' instead.\n# ALTERNATIVES:\n# head mynote.txt    # Show first 10 lines\n# tail mynote.txt    # Show last 10 lines"
+        },
+        {
+          "title": "cp - Copy Files",
+          "description": "Creates a copy of a file or folder. The original remains unchanged.",
+          "code": "cp source.txt destination.txt\ncp -r source_folder/ dest_folder/   # Copy entire folder (recursive)\ncp -p file.txt copy.txt     # Preserve permissions and timestamps\n\n# EXAMPLE:\n# cp mynote.txt ~/storage/shared/Documents/\n# This copies your note to Android's Documents folder"
+        },
+        {
+          "title": "mv - Move or Rename",
+          "description": "Moves files to different locations OR renames them. No copy is created.",
+          "code": "mv oldname.txt newname.txt   # Rename file\nmv file.txt ~/Documents/   # Move to a different folder\nmv folder1/folder2 .    # Move a subfolder to current location\n\n# DIFFERENCE BETWEEN CP AND MV:\n# cp = COPY (original stays, new copy created)\n# mv = MOVE (original moves, no copy remains)"
+        },
+        {
+          "title": "rm - Delete Files",
+          "description": "Permanently deletes files. There is NO undo. Be very careful.",
+          "code": "rm file.txt    # Delete a single file\nrm -r folder/   # Delete a folder and everything inside\nrm -f file.txt   # Force delete without confirmation (DANGEROUS)\nrm -rf folder/   # Force delete folder without confirmation (VERY DANGEROUS)\nrm *.txt     # Delete all .txt files in current directory\n\n# SAFETY RULES:\n# 1. Always use 'rm -i' when learning\n# 2. Triple-check the filename\n# 3. Use 'ls' first to see what you are deleting\n# 4. NEVER run 'rm -rf /' - this would delete everything in Termux"
+        },
+        {
+          "title": "echo - Print Text",
+          "description": "Prints text to the screen. Useful for scripts and testing.",
+          "code": "echo 'Hello World'   # Print text\necho $HOME    # Print a variable's value\necho 'Text' > file.txt    # Write text to a file (overwrite)\necho 'More' >> file.txt      # Append text to a file"
+        }
+      ]
+    },
+    "file-system": {
+      "title": "File System",
+      "icon": "fa-folder-tree",
+      "items": [
+        {
+          "title": "Termux Directory Structure",
+          "description": "Termux has its own isolated file system. Here is what each important directory does.",
+          "code": "# YOUR HOME FOLDER:\n# ~ or /data/data/com.termux/files/home\n# All your personal files and projects should go here.\n\n# PACKAGES FOLDER:\n# $PREFIX or /data/data/com.termux/files/usr\n# Where installed packages live. You rarely need to touch this.\n\n# ANDROID STORAGE (after termux-setup-storage):\n# ~/storage/shared/     - Your phone's internal storage\n# ~/storage/downloads/  - Downloads folder\n# ~/storage/dcim/       - Camera photos\n# ~/storage/pictures/   - Other images\n# ~/storage/music/      - Music files\n# ~/storage/movies/     - Video files"
+        },
+        {
+          "title": "Absolute vs Relative Paths",
+          "description": "Paths tell the computer where a file is. Understanding the difference is crucial.",
+          "code": "# ABSOLUTE PATH: Starts from the root (/)\n# Example: /data/data/com.termux/files/home/practice/mynote.txt\n# This path works no matter where you are.\n\n# RELATIVE PATH: Starts from your current location\n# Example: practice/mynote.txt\n# This only works if you are in the home folder.\n\n# SPECIAL SHORTCUTS:\n# .  = Current folder\n# .. = Parent folder (one level up)\n# ~  = Home folder\n# -  = Previous folder\n\n# EXAMPLES:\n# cd /data/data/com.termux/files/home  # Absolute path (works anywhere)\n# cd practice      # Relative path\n# cd ../Documents     # Go up then into Documents\n# cd ~/storage/shared/DCIM    # Go home then to camera photos"
+        },
+        {
+          "title": "Viewing Files with less and head/tail",
+          "description": "For large files, cat is not practical. Use less, head, and tail instead.",
+          "code": "# HEAD AND TAIL:\nhead -n 20 file.txt  # Show first 20 lines\ntail -n 20 file.txt    # Show last 20 lines\ntail -f log.txt   # Follow file as it grows (real-time)\n\n# LESS COMMANDS (while viewing):\n# less file.txt\n# q = Quit\n# Space = Next page\n# b = Previous page\n# /word = Search forward for 'word'\n# n = Next search result\n# N = Previous search result\n# g = Go to beginning\n# G = Go to end"
+        }
+      ]
+    },
+    "package-management": {
+      "title": "Package Management",
+      "icon": "fa-box",
+      "items": [
+        {
+          "title": "What is a Package Manager?",
+          "description": "A package manager is like an app store for the command line.",
+          "code": "# pkg = Termux's package manager (based on apt)\n\n# HOW IT WORKS:\n# 1. You tell pkg what you want: pkg install python\n# 2. pkg checks what is needed (dependencies)\n# 3. pkg downloads from the internet\n# 4. pkg installs everything automatically\n\n# WHY THIS IS BETTER:\n# - Automatic dependency handling\n# - Easy updates for all software\n# - Clean uninstallation\n# - Verified, safe packages"
+        },
+        {
+          "title": "Essential pkg Commands",
+          "description": "These are the only pkg commands you need to know.",
+          "code": "# UPDATE AND UPGRADE (do this first always)\npkg update && pkg upgrade  # Refresh the list of available packages and install newer versions\n\n# SEARCHING\npkg search python    # Find packages related to 'python'\npkg list-all        # Show every available package (very long)\n\n# INSTALLING\npkg install python   # Install Python\npkg install nodejs git vim  # Install multiple packages\n\n# REMOVING\npkg uninstall python  # Remove Python\npkg uninstall python --purge  # Remove including configuration files\n\n# INFORMATION\npkg list-installed   # Show what you have installed\npkg show python      # Show detailed info about a package\n\n# CLEANING (free up space)\npkg clean    # Remove downloaded package files"
+        },
+        {
+          "title": "Must-Have Packages for Beginners",
+          "description": "Essential packages every Termux user should install.",
+          "code": "# TEXT EDITORS\npkg install nano     # Simple, beginner-friendly editor\npkg install vim      # Powerful editor (steep learning curve)\n\n# FILE DOWNLOADING\npkg install wget     # Download files from the web\npkg install curl     # Download and test APIs\n\n# PROGRAMMING\npkg install python   # Python 3\npkg install nodejs   # JavaScript runtime\npkg install ruby     # Ruby programming language\n\n# VERSION CONTROL\npkg install git      # Track code changes\n\n# SYSTEM ACCESS\npkg install openssh  # Connect to other computers\npkg install termux-api  # Access Android features\n\n# NETWORK TOOLS\npkg install nmap     # Network scanning\npkg install traceroute  # Trace network path\n\n# UTILITIES\npkg install tree   # Show folder structure as tree\npkg install htop     # Better task manager\npkg install man      # Manual pages\n\n# INSTALL ALL AT ONCE\npkg install nano vim wget curl python nodejs git openssh termux-api tree htop man"
+        },
+        {
+          "title": "Repository Management",
+          "description": "Packages come from repositories. Sometimes you need to change which repo you use.",
+          "code": "# DEFAULT REPOSITORIES:\n# main - The primary Termux repository\n# root - Root-only tools (requires rooted phone)\n# x11 - Graphical applications\n# game - Games and entertainment\n\n# CHANGE MIRROR (if downloads are slow)\ntermux-change-repo\n# Use arrow keys to select a mirror, Space to select, Enter to confirm\n\n# ADD EXTRA REPOSITORIES\npkg install root-repo   # Root tools (requires root)\npkg install x11-repo    # GUI applications\npkg install game-repo   # Games\n\n# VIEW CURRENT REPOSITORIES\ncat $PREFIX/etc/apt/sources.list"
+        },
+        {
+          "title": "Working with Different Package Sources",
+          "description": "Not all software is in Termux repositories. Here is how to get software from other sources.",
+          "code": "# PYTHON PACKAGES (pip)\npip install requests\npip install flask\npip list\n\n# NODE.JS PACKAGES (npm)\nnpm install -g nodemon\nnpm list -g --depth=0\n\n# RUBY GEMS (gem)\ngem install bundler\n\n# BUILDING FROM SOURCE\npkg install build-essential\ngit clone https://github.com/user/repo.git\ncd repo\n./configure\nmake\nmake install"
+        }
+      ]
+    },
+    "storage-access": {
+      "title": "Storage Access",
+      "icon": "fa-database",
+      "items": [
+        {
+          "title": "Setting Up Storage Access",
+          "description": "Before accessing Android files, you must grant permission.",
+          "code": "# STEP 1: Run the setup command\ntermux-setup-storage\n\n# STEP 2: Verify it worked\nls ~/storage/\n# You should see: shared/ downloads/ dcim/ pictures/ music/ movies/\n\n# TROUBLESHOOTING:\n# If storage does not work, try: rm -rf ~/storage && termux-setup-storage"
+        },
+        {
+          "title": "Accessing Android Folders",
+          "description": "After setup, your Android storage is accessible through ~/storage/.",
+          "code": "# YOUR PHONE'S STORAGE\n~/storage/shared/  # Root of internal storage\n\n# SHORTCUT FOLDERS\n~/storage/downloads/  # Browser downloads\n~/storage/dcim/  # Camera photos\n~/storage/pictures/  # Screenshots and saved images\n~/storage/music/    # Music files\n~/storage/movies/  # Videos\n~/storage/documents/  # Documents folder\n\n# EXAMPLES\nls ~/storage/downloads/\ncd ~/storage/dcim/Camera/\ncp myfile.txt ~/storage/downloads/"
+        },
+        {
+          "title": "Moving Files Between Environments",
+          "description": "Termux private storage and Android shared storage are separate.",
+          "code": "# TERMUX PRIVATE -> ANDROID\ncp ~/mynote.txt ~/storage/shared/Documents/\n\n# ANDROID -> TERMUX PRIVATE\ncp ~/storage/shared/Download/document.pdf ~/\n\n# COPY WHOLE FOLDERS (use -r for recursive)\ncp -r ~/myproject ~/storage/shared/Documents/\n\n# MOVE instead of copy\nmv ~/storage/shared/DCIM/old_photo.jpg ~/Pictures/"
+        },
+        {
+          "title": "Working with External SD Cards",
+          "description": "If your device has an SD card, here is how to access it.",
+          "code": "# FIND THE SD CARD MOUNT POINT\nls /storage/\n# Look for folders like: emulated, sdcard1, or a long alphanumeric string\n\n# COMMON LOCATIONS\n/storage/sdcard1/\n/storage/XXXX-XXXX/\n\n# CREATE A SYMLINK FOR EASIER ACCESS\nln -s /storage/sdcard1 ~/sdcard\n\n# NOW YOU CAN USE\ncd ~/sdcard\nls\n\n# CHECK SD CARD SPACE\ndf -h | grep sdcard"
+        }
+      ]
+    },
+    "customization": {
+      "title": "Customization",
+      "icon": "fa-paint-brush",
+      "items": [
+        {
+          "title": "Zsh and Oh My Zsh",
+          "description": "Upgrade from Bash to Zsh with themes and plugins.",
+          "code": "# INSTALL ZSH\npkg install zsh\n\n# CHANGE DEFAULT SHELL\nchsh -s zsh\n\n# Restart Termux completely\n\n# INSTALL OH MY ZSH\nsh -c \"$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)\"\n\n# CHANGE THEME IN ~/.zshrc\n# Find ZSH_THEME=\"robbyrussell\" and change to:\n# ZSH_THEME=\"agnoster\"\n\n# Apply changes\nsource ~/.zshrc"
+        },
+        {
+          "title": "Color Schemes",
+          "description": "Customize terminal colors by editing colors.properties.",
+          "code": "# CREATE THE .termux DIRECTORY\nmkdir -p ~/.termux\n\n# EDIT COLOR SCHEME\nnano ~/.termux/colors.properties\n\n# EXAMPLE THEME:\n# background=black\n# foreground=white\n# cursor=purple\n\n# Apply changes (restart Termux)"
+        },
+        {
+          "title": "Font Size and Style",
+          "description": "Adjust font size on the fly and change the font family.",
+          "code": "# FONT SIZE SHORTCUTS (in Termux):\n# Volume Up button = Increase font size\n# Volume Down button = Decrease font size\n\n# CHANGE FONT FAMILY\nnano ~/.termux/termux.properties\n\n# Add or modify this line:\n# font = /path/to/font.ttf\n\n# Example using a built-in font:\n# font = monospace\n\n# Apply changes\ntermux-reload-settings"
+        },
+        {
+          "title": "Custom Aliases",
+          "description": "Create shortcuts for frequently used commands.",
+          "code": "# EDIT YOUR SHELL CONFIGURATION FILE\nnano ~/.zshrc   # If using Zsh\nnano ~/.bashrc  # If using Bash\n\n# ADD ALIASES AT THE BOTTOM:\nalias ll='ls -la'\nalias update='pkg update && pkg upgrade'\nalias install='pkg install'\nalias remove='pkg uninstall'\nalias home='cd ~'\n\n# SAVE AND APPLY\nsource ~/.zshrc  # or source ~/.bashrc"
+        }
+      ]
+    },
+    "python-dev": {
+      "title": "Python Development",
+      "icon": "fab fa-python",
+      "items": [
+        {
+          "title": "Installing Python",
+          "description": "Python is a beginner-friendly programming language.",
+          "code": "# INSTALLATION\npkg install python\n\n# VERIFY\npython --version\n\n# PIP (Python's package manager)\npip --version\npip install --upgrade pip\n\n# RUN PYTHON INTERACTIVE MODE (REPL)\npython\n>>> print('Hello')\n>>> exit()\n\n# RUN A PYTHON SCRIPT\npython my_script.py"
+        },
+        {
+          "title": "Installing Python Packages",
+          "description": "Python has thousands of packages. Use pip to install them.",
+          "code": "# BASIC COMMANDS\npip install requests\npip install flask numpy pandas\npip uninstall requests\npip list\npip show requests\npip freeze > requirements.txt\npip install -r requirements.txt\n\n# ESSENTIAL PACKAGES\npip install requests    # Download from websites\npip install beautifulsoup4  # Extract data from HTML\npip install flask   # Create web servers\npip install numpy   # Math and arrays\npip install pandas   # Data analysis\npip install matplotlib   # Plotting and graphs\n\n# UPGRADE A PACKAGE\npip install --upgrade requests\n\n# INSTALL SPECIFIC VERSION\npip install requests==2.28.0"
+        },
+        {
+          "title": "Creating a Simple Web Server",
+          "description": "Start a web server in one line of Python.",
+          "code": "# METHOD 1: Built-in HTTP server\npython -m http.server 8000\n# Open http://localhost:8000 in your browser\n# Press Ctrl+C to stop\n\n# Serve a specific directory\npython -m http.server 8000 --directory /sdcard/Download\n\n# METHOD 2: Flask web framework\npip install flask\n# Create app.py and run: python app.py"
+        },
+        {
+          "title": "Working with APIs",
+          "description": "Fetch data from internet APIs using Python.",
+          "code": "# INSTALL REQUESTS\npip install requests\n\n# Create a Python script to fetch API data"
+        }
+      ]
+    },
+    "node-dev": {
+      "title": "Node.js Development",
+      "icon": "fab fa-node-js",
+      "items": [
+        {
+          "title": "Installing Node.js",
+          "description": "Node.js lets you run JavaScript outside of a browser.",
+          "code": "# INSTALLATION\npkg install nodejs\n\n# VERIFY\nnode --version\nnpm --version\n\n# NODE REPL (interactive)\nnode\n> console.log('Hello')\n> .exit\n\n# RUN A NODE.JS SCRIPT\nnode app.js"
+        },
+        {
+          "title": "Creating a Web Server with Express",
+          "description": "Express is the most popular Node.js web framework.",
+          "code": "# SETUP\nmkdir myapp && cd myapp\nnpm init -y\nnpm install express\n\n# Create server.js and run: node server.js\n\n# AUTO-RESTART WITH NODEMON\nnpm install -g nodemon\nnodemon server.js"
+        },
+        {
+          "title": "Useful npm Packages",
+          "description": "Install global tools and local packages for development.",
+          "code": "# GLOBAL PACKAGES (use -g flag)\nnpm install -g nodemon    # Auto-restart server\nnpm install -g pm2     # Process manager\nnpm install -g npm-check   # Check outdated packages\nnpm install -g http-server # Simple HTTP server\n\n# LOCAL PACKAGES (in project directory)\nnpm install axios   # HTTP client\nnpm install chalk   # Colored terminal output\nnpm install dotenv   # Env variables\nnpm install commander  # Command line interfaces\n\n# USING PM2 (keep running after closing terminal)\npm2 start server.js\npm2 status\npm2 logs\npm2 stop server.js"
+        }
+      ]
+    },
+    "git-github": {
+      "title": "Git and GitHub",
+      "icon": "fab fa-github",
+      "items": [
+        {
+          "title": "Installing and Configuring Git",
+          "description": "Git tracks changes to files. Think of it as an unlimited undo button.",
+          "code": "# INSTALLATION\npkg install git\n\n# CONFIGURE YOUR IDENTITY (required for commits)\ngit config --global user.name 'Your Name'\ngit config --global user.email 'your@email.com'\n\n# VERIFY CONFIGURATION\ngit config --list\n\n# SET DEFAULT EDITOR\ngit config --global core.editor 'nano'\n\n# SET LINE ENDINGS\ngit config --global core.autocrlf input\n\n# ENABLE COLOR\ngit config --global color.ui auto"
+        },
+        {
+          "title": "Basic Git Workflow",
+          "description": "This is the standard workflow you will use 90% of the time.",
+          "code": "# STEP 1: Initialize a repository\ngit init\n\n# STEP 2: Make changes to your files\n# Edit files with nano, create new files, delete files\n\n# STEP 3: Check what changed\ngit status\ngit diff\n\n# STEP 4: Stage the changes\ngit add filename.txt\ngit add .\n\n# STEP 5: Commit the changes\ngit commit -m 'Describe what you changed'\n\n# STEP 6: View commit history\ngit log\ngit log --oneline\ngit log --graph --oneline\n\n# STEP 7: Connect to remote repository\ngit remote add origin https://github.com/username/repo.git\n\n# STEP 8: Push to GitHub\ngit push -u origin main\n\n# STEP 9: Pull others' changes\ngit pull origin main"
+        },
+        {
+          "title": "Understanding Branches",
+          "description": "Branches let you work on different features separately.",
+          "code": "# CREATE A NEW BRANCH\ngit branch feature-name\ngit checkout feature-name\n# Or do both at once:\ngit checkout -b feature-name\n\n# SEE ALL BRANCHES\ngit branch\n\n# SWITCH BETWEEN BRANCHES\ngit checkout main\n\n# MERGE A BRANCH\ngit checkout main\ngit merge feature-name\n\n# DELETE A BRANCH\ngit branch -d feature-name\n\n# SEE BRANCH DIFFERENCES\ngit diff main..feature-name"
+        },
+        {
+          "title": "Working with GitHub",
+          "description": "Clone repositories and contribute to open source.",
+          "code": "# CLONE A REPOSITORY (HTTPS)\ngit clone https://github.com/user/repository.git\n\n# CLONE WITH SSH\ngit clone git@github.com:user/repository.git\n\n# CLONE SPECIFIC BRANCH\ngit clone -b branch-name https://github.com/user/repo.git\n\n# FORK WORKFLOW:\n# 1. Fork on GitHub website\n# 2. Clone your fork\ngit clone https://github.com/your-username/repo.git\ncd repo\n\n# 3. Add original repo as upstream\ngit remote add upstream https://github.com/original-owner/repo.git\n\n# 4. Fetch upstream changes\ngit fetch upstream\ngit merge upstream/main\n\n# 5. Push to your fork\ngit push origin main\n\n# GENERATE SSH KEY (for GitHub)\nssh-keygen -t ed25519 -C 'your@email.com'\ncat ~/.ssh/id_ed25519.pub\n# Add this key to GitHub > Settings > SSH and GPG keys"
+        },
+        {
+          "title": "Undoing Changes",
+          "description": "Fix mistakes and revert changes in Git.",
+          "code": "# UNSTAGE A FILE (keep changes)\ngit reset HEAD file.txt\n\n# DISCARD CHANGES TO A FILE\ngit checkout -- file.txt\n\n# UNDO LAST COMMIT (keep changes)\ngit reset --soft HEAD~1\n\n# UNDO LAST COMMIT (discard changes)\ngit reset --hard HEAD~1\n\n# REVERT A COMMIT\ngit revert COMMIT_HASH\n\n# AMEND LAST COMMIT MESSAGE\ngit commit --amend -m 'New message'\n\n# ADD FORGOTTEN FILE TO LAST COMMIT\ngit add forgotten.txt\ngit commit --amend --no-edit\n\n# RECOVER DELETED COMMIT\ngit reflog\ngit checkout COMMIT_HASH"
+        }
+      ]
+    },
+    "networking": {
+      "title": "Networking and SSH",
+      "icon": "fas fa-network-wired",
+      "items": [
+        {
+          "title": "SSH Client (Connect to Other Computers)",
+          "description": "SSH lets you securely connect to and control other computers.",
+          "code": "# INSTALLATION\npkg install openssh\n\n# BASIC CONNECTION\nssh username@hostname_or_ip\n\n# EXAMPLE\nssh user@192.168.1.100\n\n# CONNECT WITH CUSTOM PORT\nssh -p 2222 user@server.com\n\n# RUN A SINGLE COMMAND\nssh user@server.com 'ls -la'\n\n# CONNECT WITH PRIVATE KEY\nssh -i ~/.ssh/id_rsa user@server.com\n\n# COPY YOUR SSH KEY (for passwordless login)\nssh-keygen -t rsa -b 4096\nssh-copy-id user@server.com\n\n# SSH CONFIG FILE (for shortcuts)\nnano ~/.ssh/config\n\n# Add:\n# Host myserver\n#     HostName 192.168.1.100\n#     User myuser\n#     Port 22\n\n# Now connect with: ssh myserver"
+        },
+        {
+          "title": "SSH Server (Access Your Phone)",
+          "description": "Turn your phone into an SSH server.",
+          "code": "# START THE SERVER\nsshd\n\n# FIND YOUR PHONE'S IP ADDRESS\nifconfig\n# or\nip addr show | grep inet\n\n# DEFAULT PORT\n# 8022 (not 22 - Android restricts low ports)\n\n# FROM YOUR COMPUTER, CONNECT TO YOUR PHONE\nssh -p 8022 username@phone_ip\n\n# FIND YOUR USERNAME\nwhoami\n\n# MAKE SSH START AUTOMATICALLY\necho 'sshd' >> ~/.zshrc\n\n# CHECK IF SERVER IS RUNNING\nps aux | grep sshd\n\n# VIEW SSH LOGS\nlogcat -s Termux:SSH\n\n# CHANGE PASSWORD\npasswd"
+        },
+        {
+          "title": "File Transfer with SCP and Rsync",
+          "description": "SCP and Rsync use SSH to transfer files securely.",
+          "code": "# COPY FROM PHONE TO COMPUTER\nscp -P 8022 username@phone_ip:~/file.txt ./\n\n# COPY FROM COMPUTER TO PHONE\nscp -P 8022 localfile.txt username@phone_ip:~/\n\n# COPY FOLDERS (use -r for recursive)\nscp -r -P 8022 username@phone_ip:~/myfolder/ ./\n\n# PRESERVE FILE PERMISSIONS\nscp -p -P 8022 file.txt username@phone_ip:~/\n\n# USING RSYNC (more efficient)\npkg install rsync\n\n# SYNC FROM PHONE TO COMPUTER\nrsync -avz -e 'ssh -p 8022' username@phone_ip:~/documents/ ./backup/\n\n# SYNC FROM COMPUTER TO PHONE\nrsync -avz -e 'ssh -p 8022' ./files/ username@phone_ip:~/files/\n\n# RSYNC WITH EXCLUDES\nrsync -avz --exclude='*.tmp' --exclude='cache/' -e 'ssh -p 8022' ./data/ user@phone:~/data/"
+        },
+        {
+          "title": "Network Tools",
+          "description": "Useful commands for testing connectivity.",
+          "code": "# PING (test connectivity)\nping google.com\nping -c 4 8.8.8.8\n\n# DOWNLOAD FILES\nwget https://example.com/file.zip\ncurl -O https://example.com/file.zip\n\n# DOWNLOAD WITH PROGRESS\nwget --progress=bar:force https://example.com/largefile.zip\n\n# CHECK YOUR PUBLIC IP\ncurl ifconfig.me\ncurl ipinfo.io/ip\n\n# GET DETAILED IP INFO\ncurl ipinfo.io\n\n# TEST HTTP HEADERS\ncurl -I https://google.com\n\n# CHECK OPEN PORTS\npkg install nmap\nnmap -p 1-1000 target.com\n\n# TRACE NETWORK ROUTE\ntraceroute google.com\n\n# DNS LOOKUP\ndig google.com\nnslookup google.com"
+        }
+      ]
+    },
+    "shortcuts": {
+      "title": "Keyboard Shortcuts",
+      "icon": "fa-keyboard",
+      "items": [
+        {
+          "title": "Essential Terminal Shortcuts",
+          "description": "These shortcuts work in almost every terminal environment.",
+          "code": "Ctrl + C = Stop current process\nCtrl + D = Exit current shell\nCtrl + L = Clear the screen\nCtrl + A = Jump to beginning of line\nCtrl + E = Jump to end of line\nCtrl + U = Delete to beginning of line\nCtrl + K = Delete to end of line\nCtrl + W = Delete previous word\nCtrl + R = Search command history\nUp/Down Arrow = Navigate command history\nTab = Auto-complete commands and filenames\nTab Tab (press twice) = Show all completions"
+        },
+        {
+          "title": "Termux-Specific Shortcuts",
+          "description": "Termux uses volume keys because Android keyboards lack certain keys.",
+          "code": "Volume Up + Q = Ctrl key\nVolume Up + W = Tilde (~)\nVolume Up + E = Pipe (|)\nVolume Up + R = Backslash (\\)\nVolume Up + T = Insert key\nVolume Up + Y = Scroll up\nVolume Up + U = Scroll down\nVolume Up + I = Page Up\nVolume Up + O = Page Down\n\nVolume Down + D = Escape key\nVolume Down + L = Tab key\nVolume Down + K = Delete key\n\n# HOW TO USE:\n# Press and hold Volume key, tap the letter key, then release both.\n\n# EXTRA KEYS ROW (add permanent shortcut row)\necho 'extra-keys = [[\"ESC\",\"CTRL\",\"ALT\",\"LEFT\",\"RIGHT\",\"UP\",\"DOWN\"]]' > ~/.termux/termux.properties\ntermux-reload-settings"
+        },
+        {
+          "title": "Nano Text Editor Shortcuts",
+          "description": "^ means Ctrl (so ^O means press Ctrl and O together).",
+          "code": "^O = Save file (Write Out)\n^X = Exit Nano\n^K = Cut current line\n^U = Paste cut line (Uncut)\n^W = Search for text (Where is)\n^\\ = Search and replace\n^G = Help (Get Help)\n^C = Show cursor position\n^_ = Go to line number\n^R = Insert another file\n\nAlt + U = Undo\nAlt + E = Redo\nAlt + A = Select text\nAlt + 6 = Copy selected text\n\n# COMMON WORKFLOW:\n# 1. Edit your file\n# 2. Press ^O to save\n# 3. Press Enter to confirm\n# 4. Press ^X to exit\n\n# ENABLE LINE NUMBERS\nnano ~/.nanorc\necho 'set linenumbers' >> ~/.nanorc"
+        },
+        {
+          "title": "Vim Text Editor Shortcuts",
+          "description": "Basic Vim commands. Vim has a learning curve but is very powerful.",
+          "code": "# INSTALL VIM\npkg install vim\n\n# MODES:\n# i = Enter Insert mode (edit text)\n# Esc = Exit Insert mode back to Normal mode\n# v = Enter Visual mode (select text)\n\n# NORMAL MODE COMMANDS:\n# :w    = Save file\n# :q    = Quit\n# :wq   = Save and quit\n# :q!   = Quit without saving\n\n# MOVEMENT (Normal mode):\n# h = Left, j = Down, k = Up, l = Right\n# 0 = Beginning of line\n# $ = End of line\n# gg = Beginning of file\n# G = End of file\n\n# EDITING (Normal mode):\n# x = Delete character\n# dd = Delete entire line\n# yy = Copy (yank) line\n# p = Paste below\n# P = Paste above\n\n# SEARCH (Normal mode):\n# /word = Search forward\n# n = Next result\n# N = Previous result\n\n# LEARN MORE:\n# vimtutor"
+        }
+      ]
+    },
+    "troubleshooting": {
+      "title": "Troubleshooting",
+      "icon": "fa-bug",
+      "items": [
+        {
+          "title": "Repository Errors",
+          "description": "If 'pkg update' fails, try these solutions.",
+          "code": "# SOLUTION 1: Change repository mirror\ntermux-change-repo\n# Use arrow keys to select a mirror, Space to select, Enter to confirm\n\n# SOLUTION 2: Clear cache and retry\npkg clean\npkg update\n\n# SOLUTION 3: Reset repositories\nrm -rf $PREFIX/var/lib/apt/lists/*\npkg update\n\n# SOLUTION 4: Reinstall keyring\npkg reinstall termux-keyring\npkg update\n\n# SOLUTION 5: Check internet connection\nping google.com\n\n# SOLUTION 6: Check date/time\n# Settings > System > Date & time > Automatic"
+        },
+        {
+          "title": "Storage Permission Issues",
+          "description": "If you cannot access Android files, fix storage permissions.",
+          "code": "# SOLUTION 1: Re-run storage setup\ntermux-setup-storage\n\n# SOLUTION 2: Check Android permissions\n# Settings > Apps > Termux > Permissions > Allow Storage\n\n# SOLUTION 3: Toggle permission off and on\n# 1. Deny storage permission in Android Settings\n# 2. Run: termux-setup-storage\n# 3. Tap ALLOW when prompted\n\n# SOLUTION 4: Manually recreate symlinks\nrm -rf ~/storage\ntermux-setup-storage\n\n# SOLUTION 5: Android 11+ Scoped Storage\n# Settings > Apps > Termux > Permissions > Files and media > Allow management of all files"
+        },
+        {
+          "title": "Package Installation Failures",
+          "description": "When 'pkg install' fails, use these fixes.",
+          "code": "# SOLUTION 1: Update everything first\npkg update && pkg upgrade\n\n# SOLUTION 2: Clear cache\npkg clean\napt clean\n\n# SOLUTION 3: Reinstall the package\npkg reinstall <package>\n\n# SOLUTION 4: Check disk space\ndf -h\n\n# SOLUTION 5: Fix broken dependencies\npkg install -f\n\n# SOLUTION 6: Check if package exists\npkg search <package-name>"
+        },
+        {
+          "title": "Termux Won't Start or Keeps Crashing",
+          "description": "If Termux crashes on launch, try these solutions.",
+          "code": "# SOLUTION 1: Clear cache (safe)\n# Settings > Apps > Termux > Storage > Clear Cache\n\n# SOLUTION 2: Clear all data (WARNING: deletes everything)\n# Settings > Apps > Termux > Storage > Clear Data\n\n# SOLUTION 3: Reinstall Termux\n# 1. Backup: cp -r ~ ~/storage/shared/termux-backup/\n# 2. Uninstall Termux\n# 3. Reinstall from F-Droid\n# 4. Restore: cp -r ~/storage/shared/termux-backup/* ~/\n\n# SOLUTION 4: Disable battery optimization\n# Settings > Apps > Termux > Battery > Unrestricted\n\n# SOLUTION 5: Check if using correct version\n# Make sure you installed from F-Droid, not Play Store"
+        },
+        {
+          "title": "SSH Connection Issues",
+          "description": "Fix problems when connecting via SSH.",
+          "code": "# SOLUTION 1: Check if sshd is running\nps aux | grep sshd\n# If not running: sshd\n\n# SOLUTION 2: Check correct port (default is 8022)\nssh -p 8022 user@phone_ip\n\n# SOLUTION 3: Find your phone's IP address\nifconfig\n\n# SOLUTION 4: Check if on same network\n# Both devices must be on same WiFi network\n\n# SOLUTION 5: Regenerate SSH keys\nrm ~/.ssh/ssh_host_*\nsshd\n\n# SOLUTION 6: Check permissions\nchmod 700 ~/.ssh\nchmod 600 ~/.ssh/authorized_keys\n\n# SOLUTION 7: View SSH logs\nlogcat -s Termux:SSH"
+        }
+      ]
+    },
+    "faq": {
+      "title": "FAQ",
+      "icon": "fa-question-circle",
+      "items": [
+        {
+          "title": "Do I need root access?",
+          "description": "No. Termux works perfectly without root. The vast majority of features work without any root access.",
+          "code": ""
+        },
+        {
+          "title": "Play Store vs F-Droid - Which should I use?",
+          "description": "Always use the F-Droid version. The Play Store version is no longer maintained.",
+          "code": "# F-Droid download: https://f-droid.org/en/packages/com.termux/\n\n# If you already installed from Play Store, uninstall it and install from F-Droid.\n# To backup: cp -r ~ ~/storage/shared/termux-backup/"
+        },
+        {
+          "title": "How do I backup my Termux setup?",
+          "description": "Backup your home directory and list of installed packages.",
+          "code": "# CREATE BACKUP\ntar -czf termux-backup.tar.gz ~/\npkg list-installed > packages.txt\ncp termux-backup.tar.gz ~/storage/shared/Documents/\ncp packages.txt ~/storage/shared/Documents/\n\n# RESTORE FROM BACKUP\ncp ~/storage/shared/Documents/termux-backup.tar.gz ~/\ncp ~/storage/shared/Documents/packages.txt ~/\ntar -xzf termux-backup.tar.gz -C ~/\nxargs pkg install < packages.txt"
+        },
+        {
+          "title": "How to prevent Android from killing Termux?",
+          "description": "Android may terminate background apps to save battery.",
+          "code": "# METHOD 1: Disable battery optimization\n# Settings > Apps > Termux > Battery > Unrestricted\n\n# METHOD 2: Use wake lock\npkg install termux-api\ntermux-wake-lock\n# To release: termux-wake-unlock\n\n# METHOD 3: Keep in foreground\nsleep infinity\n\n# METHOD 4: Lock Termux in recent apps\n# Open recent apps, find Termux, tap the lock icon"
+        },
+        {
+          "title": "Can I run GUI applications?",
+          "description": "Yes, you can run basic GUI applications using VNC or Termux:X11.",
+          "code": "# METHOD 1: Termux:X11\n# 1. Install Termux:X11 from F-Droid\n# 2. In Termux:\npkg install x11-repo\npkg install termux-x11\n\n# METHOD 2: VNC Server\npkg install tigervnc\nvncserver\n# Connect using a VNC viewer app to localhost:5901\n\n# Stop VNC server:\nvncserver -kill :1"
+        },
+        {
+          "title": "How to change the default shell?",
+          "description": "The default shell is Bash. You can switch to Zsh for more features.",
+          "code": "# INSTALL ZSH\npkg install zsh\n\n# CHANGE DEFAULT SHELL\nchsh -s zsh\n\n# Restart Termux\n\n# INSTALL OH MY ZSH (themes and plugins)\nsh -c \"$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)\"\n\n# TO CHANGE BACK TO BASH\nchsh -s bash\n\n# SEE AVAILABLE SHELLS\ncat /etc/shells"
+        },
+        {
+          "title": "How to update Termux itself?",
+          "description": "Termux is updated through F-Droid, not through pkg.",
+          "code": "# TO UPDATE TERMUX APP:\n# 1. Open F-Droid app\n# 2. Go to Settings > Updates\n# 3. If Termux has an update, install it\n\n# TO UPDATE PACKAGES INSIDE TERMUX\npkg update && pkg upgrade\n\n# TO CHECK TERMUX VERSION\npkg --version"
+        },
+        {
+          "title": "How to fix 'Cannot connect to repository' error?",
+          "description": "This usually means your repository mirror is down.",
+          "code": "# QUICK FIX\ntermux-change-repo\n# Select a different mirror\n\n# IF THAT FAILS\npkg clean\nrm -rf $PREFIX/var/lib/apt/lists/*\npkg update\n\n# CHECK INTERNET\nping google.com\n\n# CHECK DATE/TIME\ndate"
+        },
+        {
+          "title": "How to access Termux from PC without USB?",
+          "description": "Use SSH to access Termux remotely from your computer over WiFi.",
+          "code": "# ON YOUR PHONE (Termux)\npkg install openssh\nsshd\n\n# Find your phone's IP\nifconfig\n\n# ON YOUR COMPUTER\nssh -p 8022 username@phone_ip\n\n# Transfer files\nscp -P 8022 file.txt username@phone_ip:~/\n\n# SET UP PASSWORDLESS LOGIN\n# On your computer:\nssh-keygen -t rsa\nssh-copy-id -p 8022 username@phone_ip"
+        }
+      ]
+    }
+  }
+}

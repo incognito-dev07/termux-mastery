@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes">
+  <title>Termux Mastery · Complete Course</title>
+  <link rel="icon" href="favicon.svg">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=PT+Sans:wght@400;700&display=swap');
+    :root { --bg: #f0f2f5; --surface: #ffffff; --border: #e2e6ea; --text: #1a1a2e; --text-secondary: #495057; --text-muted: #868e96; --accent: #6c5ce7; --accent-hover: #5a4bd1; --accent-bg: #f0edff; --accent-light: #e8e4ff; --shadow: 0 2px 8px rgba(0,0,0,0.06); --shadow-md: 0 4px 20px rgba(0,0,0,0.08); --shadow-lg: 0 8px 40px rgba(0,0,0,0.12); --radius: 16px; --radius-sm: 10px; --transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1); }
+    * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'PT Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; }
+    body { background: var(--bg); color: var(--text); line-height: 1.6; -webkit-font-smoothing: antialiased; padding-bottom: 80px; }
+    .navbar { background: var(--surface); padding: 12px 16px; border-bottom: 1px solid var(--border); position: sticky; top: 0; z-index: 100; display: flex; align-items: center; justify-content: space-between; box-shadow: var(--shadow); }
+    .navbar-left { display: flex; align-items: center; gap: 10px; cursor: pointer; }
+    .navbar-logo { width: 32px; height: 32px; }
+    .navbar-title { font-size: 20px; font-weight: 700; color: var(--text); letter-spacing: -0.02em; }
+    .navbar-title .highlight { color: var(--accent); }
+    .app { max-width: 100%; padding: 16px 16px 20px; margin: 0 auto; }
+    .back-btn { display: inline-flex; align-items: center; gap: 8px; padding: 8px 16px; background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius-sm); color: var(--text-secondary); font-size: 14px; font-weight: 700; cursor: pointer; transition: var(--transition); font-family: 'PT Sans', sans-serif; margin-bottom: 16px; }
+    .back-btn:hover { background: var(--accent-bg); border-color: var(--accent); color: var(--accent); }
+    .back-btn i { font-size: 14px; }
+    .container { display: flex; flex-direction: column; gap: 16px; }
+    .topic-grid { display: flex; flex-direction: column; gap: 12px; }
+    .topic-card { background: var(--surface); border-radius: var(--radius); padding: 18px 20px; border: 1px solid var(--border); box-shadow: var(--shadow); cursor: pointer; transition: var(--transition); display: flex; align-items: center; gap: 16px; }
+    .topic-card:hover { transform: translateY(-2px); box-shadow: var(--shadow-md); border-color: var(--accent); }
+    .topic-card:active { transform: scale(0.98); }
+    .topic-icon { width: 44px; height: 44px; border-radius: var(--radius-sm); background: var(--accent-bg); display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+    .topic-icon i { font-size: 18px; color: var(--accent); }
+    .topic-info { flex: 1; }
+    .topic-info h3 { font-size: 15px; font-weight: 700; color: var(--text); }
+    .topic-info p { font-size: 13px; color: var(--text-secondary); margin-top: 2px; }
+    .topic-info .lesson-count { font-size: 12px; color: var(--text-muted); font-weight: 700; margin-top: 4px; display: inline-block; background: var(--bg); padding: 1px 10px; border-radius: 20px; }
+    .topic-arrow { color: var(--text-muted); font-size: 14px; transition: var(--transition); }
+    .topic-card:hover .topic-arrow { color: var(--accent); transform: translateX(4px); }
+    .section-container { background: var(--surface); border-radius: var(--radius); overflow: hidden; box-shadow: var(--shadow); border: 1px solid var(--border); }
+    .section-header { display: flex; align-items: center; gap: 12px; padding: 16px 20px; background: var(--surface); border-bottom: 2px solid var(--bg); }
+    .section-header .icon-wrap { width: 36px; height: 36px; border-radius: var(--radius-sm); background: var(--accent-bg); display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+    .section-header i { font-size: 16px; color: var(--accent); }
+    .section-header h2 { font-size: 16px; font-weight: 700; color: var(--text); flex: 1; }
+    .section-header .count { font-size: 12px; color: var(--text-muted); background: var(--bg); padding: 2px 12px; border-radius: 20px; font-weight: 700; }
+    .goto-beginner-btn { display: flex; align-items: center; justify-content: space-between; padding: 14px 18px; background: linear-gradient(135deg, var(--accent), #8b7cf7); border: none; border-radius: var(--radius-sm); color: #fff; text-decoration: none; transition: var(--transition); cursor: pointer; font-weight: 700; font-size: 14px; box-shadow: 0 4px 16px rgba(108,92,231,0.3); }
+    .goto-beginner-btn:hover { transform: translateY(-2px); box-shadow: 0 6px 24px rgba(108,92,231,0.4); }
+    .goto-beginner-btn:active { transform: scale(0.97); }
+    .goto-beginner-btn span { display: flex; align-items: center; gap: 8px; }
+    .goto-beginner-btn i:last-child { transition: transform 0.2s; }
+    .goto-beginner-btn:hover i:last-child { transform: translateX(4px); }
+    .commands-list { padding: 4px 0; }
+    .command-card { border-bottom: 1px solid var(--border); background: var(--surface); }
+    .command-card:last-child { border-bottom: none; }
+    .command-header { display: flex; justify-content: space-between; align-items: center; padding: 14px 20px; cursor: pointer; transition: var(--transition); gap: 12px; }
+    .command-header:active { background: var(--accent-bg); }
+    .command-title { display: flex; align-items: center; gap: 12px; font-weight: 700; color: var(--text); font-size: 15px; flex: 1; }
+    .command-title .num { display: inline-flex; align-items: center; justify-content: center; width: 24px; height: 24px; border-radius: 50%; background: var(--bg); color: var(--text-muted); font-size: 11px; font-weight: 700; flex-shrink: 0; }
+    .command-arrow { color: var(--text-muted); transition: transform 0.25s; flex-shrink: 0; font-size: 13px; }
+    .command-card.expanded .command-arrow { transform: rotate(180deg); }
+    .command-content { padding: 0 20px; max-height: 0; overflow: hidden; transition: all 0.3s ease; }
+    .command-card.expanded .command-content { padding: 0 20px 18px 20px; max-height: 900px; }
+    .command-desc { color: var(--text-secondary); margin-bottom: 14px; line-height: 1.7; font-size: 14px; }
+    .code-block { background: #1a1a2e; border-radius: var(--radius-sm); overflow: hidden; border: none; }
+    .code-header { background: #252540; padding: 8px 16px; display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid rgba(255,255,255,0.06); color: rgba(255,255,255,0.6); font-size: 12px; font-weight: 700; letter-spacing: 0.3px; text-transform: uppercase; }
+    .code-header span i { margin-right: 6px; color: var(--accent); }
+    .copy-code-btn { background: rgba(255,255,255,0.06); border: none; color: rgba(255,255,255,0.6); cursor: pointer; padding: 4px 12px; border-radius: 6px; transition: var(--transition); display: flex; align-items: center; gap: 6px; font-size: 12px !important; font-weight: 700; font-family: 'PT Sans', sans-serif; }
+    .copy-code-btn:hover { background: var(--accent); color: #fff; }
+    .code-block pre { margin: 0; padding: 16px 18px; overflow-x: auto; white-space: pre-wrap; word-break: break-word; font-family: 'SF Mono', 'Fira Code', 'Consolas', monospace !important; font-size: 13px; line-height: 1.8; color: #e8e8f0; background: #1a1a2e; }
+    .code-block code { font-family: 'SF Mono', 'Fira Code', 'Consolas', monospace !important; color: #e8e8f0; }
+    .code-block pre code .comment { color: #6c7a89; font-style: italic; }
+    .code-block pre code .cmd { color: #7bed9f; }
+    .code-block pre code .flag { color: #f6b93b; }
+    .footer { text-align: center; padding-top: 24px; margin-top: 24px; border-top: 2px solid var(--border); color: var(--text-muted); font-size: 13px; }
+    .footer a { color: var(--accent); text-decoration: none; font-weight: 700; }
+    .footer a:hover { text-decoration: underline; }
+    .footer-note { margin-top: 4px; font-size: 12px; }
+    .toast { position: fixed; bottom: 80px; left: 50%; transform: translateX(-50%) translateY(80px); background: var(--text); color: #fff; padding: 12px 24px; border-radius: var(--radius-sm); font-size: 14px; font-weight: 700; z-index: 3000; opacity: 0; transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); box-shadow: var(--shadow-lg); font-family: 'PT Sans', sans-serif; pointer-events: none; }
+    .toast.show { opacity: 1; transform: translateX(-50%) translateY(0); }
+    .floating-nav { position: fixed; bottom: 20px; left: 50%; transform: translateX(-50%); z-index: 100; display: flex; gap: 8px; background: var(--surface); padding: 6px 8px; border-radius: var(--radius); box-shadow: var(--shadow-lg); border: 1px solid var(--border); backdrop-filter: blur(12px); background: rgba(255,255,255,0.92); }
+    .floating-nav button { display: flex; align-items: center; justify-content: center; gap: 6px; padding: 8px 16px; background: transparent; border: none; border-radius: var(--radius-sm); color: var(--text-secondary); font-size: 13px; font-weight: 700; cursor: pointer; transition: var(--transition); font-family: 'PT Sans', sans-serif; white-space: nowrap; }
+    .floating-nav button:hover { background: var(--accent-bg); color: var(--accent); }
+    .floating-nav button.active { background: var(--accent); color: #fff; }
+    .floating-nav button i { font-size: 14px; }
+    .floating-nav .scroll-btn { padding: 8px 14px; }
+    @media (min-width: 600px) { .app { padding: 24px 40px 20px; max-width: 720px; margin: 0 auto; } .topic-card { padding: 20px 24px; } .topic-info h3 { font-size: 17px; } .floating-nav { padding: 8px 12px; gap: 12px; } .floating-nav button { padding: 10px 24px; font-size: 14px; } }
+    @media (max-width: 480px) { .app { padding: 12px 12px 20px; } .navbar { padding: 10px 12px; } .navbar-title { font-size: 17px; } .section-header { padding: 14px 16px; } .section-header h2 { font-size: 15px; } .command-header { padding: 12px 16px; } .command-title { font-size: 14px; } .command-card.expanded .command-content { padding: 0 16px 14px 16px; } .code-block pre { font-size: 12px; padding: 12px 14px; } .toast { font-size: 13px; padding: 10px 20px; bottom: 72px; } .topic-card { padding: 14px 16px; } .topic-icon { width: 38px; height: 38px; } .topic-info h3 { font-size: 14px; } .floating-nav { bottom: 12px; padding: 4px 6px; gap: 4px; } .floating-nav button { padding: 6px 12px; font-size: 12px; } .floating-nav button i { font-size: 12px; } .goto-beginner-btn { padding: 12px 16px; font-size: 13px; } }
+    @media (hover: none) and (pointer: coarse) { .topic-card:active { transform: scale(0.97); } .command-header:active { background: var(--accent-bg); } .goto-beginner-btn:active { transform: scale(0.97); } .copy-code-btn:active { background: var(--accent); color: #fff; } }
+  </style>
+</head>
+<body>
+
+<nav class="navbar">
+  <div class="navbar-left" onclick="goHome()">
+    <img src="favicon.svg" alt="Termux" class="navbar-logo">
+    <span class="navbar-title">Termux <span class="highlight">Mastery</span></span>
+  </div>
+</nav>
+
+<div class="app">
+  <div id="backButtonContainer"></div>
+  <main class="main">
+    <div class="container"><div id="contentContainer"></div></div>
+  </main>
+  <footer class="footer">
+    <p>Termux on <a href="https://f-droid.org/en/packages/com.termux/" target="_blank">F-Droid</a> · <a href="https://github.com/termux/termux-app" target="_blank">GitHub</a></p>
+    <p class="footer-note">2026 Incognito · Open Source</p>
+  </footer>
+</div>
+
+<div id="copyToast" class="toast">Copied!</div>
+
+<div class="floating-nav" id="floatingNav">
+  <button id="navBeginner" class="active"><i class="fas fa-graduation-cap"></i> Beginner</button>
+  <button id="navMain"><i class="fas fa-book"></i> Main</button>
+  <button class="scroll-btn" onclick="scrollToTop()"><i class="fas fa-arrow-up"></i></button>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
