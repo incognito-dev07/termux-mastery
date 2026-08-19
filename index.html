@@ -11,11 +11,15 @@
     :root { --bg: #f0f2f5; --surface: #ffffff; --border: #e2e6ea; --text: #1a1a2e; --text-secondary: #495057; --text-muted: #868e96; --accent: #6c5ce7; --accent-hover: #5a4bd1; --accent-bg: #f0edff; --accent-light: #e8e4ff; --shadow: 0 2px 8px rgba(0,0,0,0.06); --shadow-md: 0 4px 20px rgba(0,0,0,0.08); --shadow-lg: 0 8px 40px rgba(0,0,0,0.12); --radius: 16px; --radius-sm: 10px; --transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1); }
     * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'PT Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; }
     body { background: var(--bg); color: var(--text); line-height: 1.7; -webkit-font-smoothing: antialiased; padding-bottom: 80px; }
-    .navbar { background: var(--surface); padding: 12px 16px; border-bottom: 1px solid var(--border); position: sticky; top: 0; z-index: 100; display: flex; align-items: center; box-shadow: var(--shadow); }
+    .navbar { background: var(--surface); padding: 12px 16px; border-bottom: 1px solid var(--border); position: sticky; top: 0; z-index: 100; display: flex; align-items: center; justify-content: space-between; box-shadow: var(--shadow); }
     .navbar-left { display: flex; align-items: center; gap: 10px; cursor: pointer; }
     .navbar-logo { width: 32px; height: 32px; }
     .navbar-title { font-size: 20px; font-weight: 700; color: var(--text); letter-spacing: -0.02em; }
     .navbar-title .highlight { color: var(--accent); }
+    .navbar-right { display: flex; align-items: center; gap: 12px; }
+    .navbar-right a { color: var(--text-secondary); transition: var(--transition); }
+    .navbar-right a:hover { color: var(--accent); }
+    .navbar-right i { font-size: 24px; }
     .app { max-width: 100%; padding: 16px 16px 20px; margin: 0 auto; }
     .back-btn { display: inline-flex; align-items: center; gap: 8px; padding: 8px 16px; background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius-sm); color: var(--text-secondary); font-size: 14px; font-weight: 700; cursor: pointer; transition: var(--transition); font-family: 'PT Sans', sans-serif; margin-bottom: 16px; }
     .back-btn:hover { background: var(--accent-bg); border-color: var(--accent); color: var(--accent); }
@@ -30,10 +34,10 @@
     .topic-icon i { font-size: 17px; color: var(--accent); }
     .topic-card .title-row { flex: 1; display: flex; align-items: center; gap: 10px; flex-wrap: wrap; }
     .topic-card .title-row h3 { font-size: 16px; font-weight: 700; color: var(--text); }
-    .topic-card .title-row .lesson-count { font-size: 12px; color: var(--text-muted); background: var(--bg); padding: 1px 10px; border-radius: 20px; font-weight: 700; white-space: nowrap; }
+    .topic-card .title-row .lesson-count { font-size: 12px; color: var(--text-muted); background: var(--bg); padding: 1px 10px; border-radius: 7px; font-weight: 700; white-space: nowrap; }
     .topic-arrow { color: var(--text-muted); font-size: 14px; transition: var(--transition); flex-shrink: 0; }
     .topic-card:hover .topic-arrow { color: var(--accent); transform: translateX(4px); }
-    .topic-card .description { margin-top: 8px; padding-left: 54px; font-size: 13px; color: var(--text-secondary); line-height: 1.6; }
+    .topic-card .description { margin-top: 5px; padding-left: 0; font-size: 15px; color: var(--text-secondary); line-height: 1.6; }
     .section-container { background: var(--surface); border-radius: var(--radius); overflow: hidden; box-shadow: var(--shadow); border: 1px solid var(--border); }
     .section-header { display: flex; align-items: center; gap: 12px; padding: 16px 20px; background: var(--surface); border-bottom: 2px solid var(--bg); }
     .section-header .icon-wrap { width: 36px; height: 36px; border-radius: var(--radius-sm); background: var(--accent-bg); display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
@@ -59,11 +63,13 @@
     .command-card.expanded .command-content { padding: 0 20px 18px 20px; max-height: 3000px; }
     .command-desc { color: var(--text-secondary); margin-bottom: 10px; line-height: 1.8; font-size: 14px; white-space: pre-wrap; }
     .command-desc strong { color: var(--text); }
-    .command-desc .highlight-text { color: var(--accent); font-weight: 700; }
-    .command-desc .cmd-highlight { background: var(--accent-bg); color: var(--accent); padding: 1px 6px; border-radius: 4px; font-family: 'SF Mono', 'Fira Code', 'Consolas', monospace; font-size: 13px; font-weight: 700; }
+    .cmd-highlight { background: var(--accent-bg); color: var(--accent); padding: 1px 6px; border-radius: 4px; font-family: 'SF Mono', 'Fira Code', 'Consolas', monospace; font-size: 13px; font-weight: 700; }
+    .example-box { background: #f8f9fa; border-left: 4px solid var(--text-muted); padding: 12px 16px; border-radius: var(--radius-sm); margin: 10px 0; }
+    .example-box h4 { font-size: 13px; font-weight: 700; color: var(--text-muted); margin-bottom: 4px; text-transform: uppercase; letter-spacing: 0.5px; }
+    .example-box p { font-size: 14px; color: var(--text-secondary); line-height: 1.7; white-space: pre-wrap; }
     .exercise-box { background: var(--accent-bg); border-left: 4px solid var(--accent); padding: 14px 16px; border-radius: var(--radius-sm); margin: 12px 0; }
     .exercise-box h4 { font-size: 14px; font-weight: 700; color: var(--accent); margin-bottom: 4px; }
-    .exercise-box p { font-size: 13px; color: var(--text-secondary); line-height: 1.7; }
+    .exercise-box p { font-size: 14px; color: var(--text-secondary); line-height: 1.7; }
     .footer { text-align: center; padding-top: 24px; margin-top: 24px; border-top: 2px solid var(--border); color: var(--text-muted); font-size: 13px; }
     .footer a { color: var(--accent); text-decoration: none; font-weight: 700; }
     .footer a:hover { text-decoration: underline; }
@@ -77,39 +83,14 @@
     .floating-nav button i { font-size: 14px; }
     .floating-nav .scroll-btn { padding: 8px 14px; }
     .hidden { display: none !important; }
-    @media (min-width: 600px) { .app { padding: 24px 40px 20px; max-width: 720px; margin: 0 auto; } .topic-card { padding: 20px 24px; } .topic-card .title-row h3 { font-size: 18px; } .floating-nav { padding: 8px 12px; gap: 12px; } .floating-nav button { padding: 10px 24px; font-size: 14px; } .topic-card .description { font-size: 14px; padding-left: 58px; } }
-    @media (max-width: 480px) { .app { padding: 12px 12px 20px; } .navbar { padding: 10px 12px; } .navbar-title { font-size: 17px; } .section-header { padding: 14px 16px; } .section-header h2 { font-size: 15px; } .command-header { padding: 12px 16px; } .command-title { font-size: 14px; } .command-card.expanded .command-content { padding: 0 16px 14px 16px; } .toast { font-size: 12px; padding: 8px 16px; bottom: 72px; } .topic-card { padding: 14px 16px; } .topic-icon { width: 36px; height: 36px; } .topic-icon i { font-size: 15px; } .topic-card .title-row h3 { font-size: 14px; } .topic-card .description { font-size: 12px; padding-left: 50px; } .floating-nav { bottom: 12px; padding: 4px 6px; gap: 4px; } .floating-nav button { padding: 6px 12px; font-size: 12px; } .floating-nav button i { font-size: 12px; } .goto-beginner-btn { padding: 12px 16px; font-size: 13px; } }
+    @media (min-width: 600px) { .app { padding: 24px 40px 20px; max-width: 720px; margin: 0 auto; } .topic-card { padding: 20px 24px; } .topic-card .title-row h3 { font-size: 18px; } .floating-nav { padding: 8px 12px; gap: 12px; } .floating-nav button { padding: 10px 24px; font-size: 14px; } .topic-card .description { font-size: 16px; } }
+    @media (max-width: 480px) { .app { padding: 12px 12px 20px; } .navbar { padding: 10px 12px; } .navbar-title { font-size: 17px; } .navbar-right i { font-size: 22px; } .section-header { padding: 14px 16px; } .section-header h2 { font-size: 15px; } .command-header { padding: 12px 16px; } .command-title { font-size: 14px; } .command-card.expanded .command-content { padding: 0 16px 14px 16px; } .toast { font-size: 12px; padding: 8px 16px; bottom: 72px; } .topic-card { padding: 14px 16px; } .topic-icon { width: 32px; height: 32px; } .topic-icon i { font-size: 15px; } .topic-card .title-row h3 { font-size: 15px; } .topic-card .description { font-size: 14px; } .floating-nav { bottom: 12px; padding: 4px 6px; gap: 4px; } .floating-nav button { padding: 6px 12px; font-size: 12px; } .floating-nav button i { font-size: 12px; } .goto-beginner-btn { padding: 12px 16px; font-size: 13px; } }
     @media (hover: none) and (pointer: coarse) { .topic-card:active { transform: scale(0.97); } .command-header:active { background: var(--accent-bg); } .goto-beginner-btn:active { transform: scale(0.97); } }
   </style>
 </head>
 <body>
-
-<nav class="navbar">
-  <div class="navbar-left" onclick="goHome()">
-    <img src="favicon.svg" alt="Termux" class="navbar-logo">
-    <span class="navbar-title">Termux <span class="highlight">Mastery</span></span>
-  </div>
-</nav>
-
-<div class="app">
-  <div id="backButtonContainer"></div>
-  <main class="main">
-    <div class="container"><div id="contentContainer"></div></div>
-  </main>
-  <footer class="footer">
-    <p>Termux on <a href="https://f-droid.org/en/packages/com.termux/" target="_blank">F-Droid</a> · <a href="https://github.com/termux/termux-app" target="_blank">GitHub</a></p>
-    <p class="footer-note">2026 Incognito · Open Source</p>
-  </footer>
-</div>
-
-<div id="copyToast" class="toast">Copied!</div>
-
-<div class="floating-nav" id="floatingNav">
-  <button id="navMain" class="active"><i class="fas fa-book"></i> Main</button>
-  <button id="navBeginner"><i class="fas fa-graduation-cap"></i> Beginner</button>
-  <button class="scroll-btn" onclick="scrollToTop()"><i class="fas fa-arrow-up"></i></button>
-</div>
-
-<script src="script.js"></script>
+  <div id="app"></div>
+  <div id="copyToast" class="toast">Copied!</div>
+  <script src="script.js"></script>
 </body>
 </html>

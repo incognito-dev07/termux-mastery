@@ -3,83 +3,94 @@
     "what-is-terminal": {
       "title": "What is a Terminal?",
       "icon": "fa-question-circle",
-      "description": "Learn what a terminal is and how it works on Android. This is the foundation for everything else you'll learn. You'll discover how typing commands replaces clicking buttons, and how Termux turns your phone into a mini Linux environment.",
+      "description": "Learn what a terminal is and how it works on Android. This is the foundation for everything you'll learn.",
       "items": [
         {
           "title": "What is a Terminal?",
-          "content": "A terminal is a text-based interface for controlling your computer. Instead of clicking buttons with a mouse, you type commands. When you press Enter, the computer executes your command.\n\nTermux brings this same experience to Android. It turns your phone into a mini Linux environment where you can run real commands, install software, write code, and automate tasks — all from a simple text interface.\n\nThink of it this way: while most apps have buttons and menus, Termux is like having a conversation with your phone by typing instructions. It's more powerful but requires learning a few key concepts.\n\nThe terminal doesn't have graphics, icons, or mouse support. Everything is text-based. This makes it incredibly fast and powerful once you learn the basics.",
-          "exercise": "Open Termux and type the word 'hello'. What do you see? Then try typing 'pwd' and see what happens. Notice how the terminal responds to each command you type."
+          "content": "A terminal is a text-based interface for controlling your computer. Instead of clicking buttons with a mouse, you type commands. When you press Enter, the computer executes your command.\n\nTermux brings this same experience to Android. It turns your phone into a mini Linux environment where you can run real commands, install software, write code, and automate tasks — all from a simple text interface.\n\nThink of it this way: while most apps have buttons and menus, Termux is like having a conversation with your phone by typing instructions. It's more powerful but requires learning a few key concepts.",
+          "example": "{{command}}pwd{{/command}} - Shows your current location in the file system.\n{{command}}ls{{/command}} - Lists all files and folders in your current location.",
+          "exercise": "Open Termux and type the word 'hello'. Observe what happens. Then try typing something that you think might be a valid command. Pay attention to the error messages you receive."
         },
         {
           "title": "Your First Command",
-          "content": "Before installing anything, you need to update Termux's list of available apps. This is like refreshing a webpage to get the latest content.\n\nThe command you'll run is pkg update. pkg is Termux's package manager — it handles installing and updating software. update tells it to refresh its list of available packages from the internet.\n\nWhen you run this, you'll see a lot of text scroll by. This is normal! Termux is downloading the latest information about what software is available to install.\n\nAfter the update completes, you should also run pkg upgrade to install any updates to your existing software. This keeps everything secure and working properly.",
-          "exercise": "Run pkg update and watch what happens. Notice how it fetches the latest package lists from the internet. Then run pkg upgrade to install any updates. Pay attention to what gets updated."
+          "content": "Before installing anything, you need to update Termux's list of available apps. This is like refreshing a webpage to get the latest content.\n\nThe command you'll run is {{command}}pkg update{{/command}}. pkg is Termux's package manager — it handles installing and updating software. {{command}}update{{/command}} tells it to refresh its list of available packages from the internet.\n\nWhen you run this, you'll see a lot of text scroll by. This is normal! Termux is downloading the latest information about what software is available to install.\n\nAfter the update completes, you should also run {{command}}pkg upgrade{{/command}} to install any updates to your existing software. This keeps everything secure and working properly.",
+          "example": "{{command}}pkg update{{/command}} - Refreshes the package list.\n{{command}}pkg upgrade{{/command}} - Installs updates for installed packages.",
+          "exercise": "Run the command to refresh the package list. Then run the command that installs any available updates for your installed software."
         },
         {
           "title": "Understanding the Prompt",
           "content": "The text before your cursor tells you where you are in the file system. This is called the 'prompt' and it's your guide to navigation.\n\nIn Termux, the prompt typically shows your current folder followed by a symbol. ~ means you're in your home folder. $ means you're a regular user (not root).\n\nWhen you navigate to different folders, the prompt updates to show your new location. This helps you stay oriented as you move around the file system.\n\nYour home folder (represented by ~) is where all your personal files and projects should live. It's your safe space within the file system.",
-          "exercise": "Type pwd to see your current location. Then type cd / and pwd again. What changed? Try cd ~ to go back home. Notice how the prompt changes to show your location."
+          "example": "{{command}}~ ${{/command}} - You're in your home folder.\n{{command}}~/storage ${{/command}} - You're in the storage folder.",
+          "exercise": "Type the command that shows your current location. Then type the command that takes you to the root directory. Type the command that shows your location again to see the change. Finally, go back to your home folder."
         }
       ]
     },
     "how-commands-work": {
       "title": "How Commands Work",
       "icon": "fa-cogs",
-      "description": "Understand the pattern behind every terminal command. Commands follow a simple structure that once you learn, you can use any terminal on any system. This section breaks down the command pattern and teaches you to navigate like a pro.",
+      "description": "Understand the pattern behind every terminal command. Commands follow a simple structure you can learn once and use forever.",
       "items": [
         {
           "title": "The Command Pattern",
-          "content": "Every terminal command follows a simple pattern: COMMAND followed by WHAT TO ACT ON. This is like giving instructions: first the action (verb), then the target (noun).\n\nFor example, ls Documents means 'list the contents of the Documents folder'. cp file.txt backup/ means 'copy file.txt to the backup folder'.\n\nSome commands don't need a target. ls by itself lists the current folder. pwd shows where you are without needing any extra information.\n\nUnderstanding this pattern makes learning new commands much easier. You'll find that most commands follow this same structure.",
-          "exercise": "Try running ls with different folders. For example: ls /data or ls ~/storage. What do you see? Notice how the output changes based on the folder you specify."
+          "content": "Every terminal command follows a simple pattern: COMMAND followed by WHAT TO ACT ON. This is like giving instructions: first the action (verb), then the target (noun).\n\nFor example, {{command}}ls Documents{{/command}} means 'list the contents of the Documents folder'. {{command}}cp file.txt backup/{{/command}} means 'copy file.txt to the backup folder'.\n\nSome commands don't need a target. {{command}}ls{{/command}} by itself lists the current folder. {{command}}pwd{{/command}} shows where you are without needing any extra information.\n\nUnderstanding this pattern makes learning new commands much easier. You'll find that most commands follow this same structure.",
+          "example": "{{command}}ls{{/command}} - Lists current folder.\n{{command}}ls /data{{/command}} - Lists the data folder.",
+          "exercise": "List the contents of your current folder. Then list the contents of the /data folder. Notice how the output changes based on what folder you're looking at."
         },
         {
           "title": "Step-by-Step: Navigate Folders",
-          "content": "Navigation is the most important skill in the terminal. You'll constantly move between folders, check where you are, and see what's inside.\n\nThe three essential navigation commands are: pwd (where am I?), ls (what's here?), and cd (go there). Master these and you can navigate anywhere.\n\nWhen you use cd, you can go to a folder by name, go up one level with cd .., or go to your home folder with cd ~.\n\nThe cd .. command is particularly useful — it takes you to the parent folder of your current location. Use it to go back up the folder structure.",
-          "exercise": "Create a folder called 'myfiles' using mkdir myfiles. Navigate into it with cd myfiles, then create another folder inside called 'docs' with mkdir docs. Use pwd and ls to verify each step. Then use cd .. to go back up one level."
+          "content": "Navigation is the most important skill in the terminal. You'll constantly move between folders, check where you are, and see what's inside.\n\nThe three essential navigation commands are: {{command}}pwd{{/command}} (where am I?), {{command}}ls{{/command}} (what's here?), and {{command}}cd{{/command}} (go there). Master these and you can navigate anywhere.\n\nWhen you use {{command}}cd{{/command}}, you can go to a folder by name, go up one level with {{command}}cd ..{{/command}}, or go to your home folder with {{command}}cd ~{{/command}}.\n\nThe {{command}}cd ..{{/command}} command is particularly useful — it takes you to the parent folder of your current location. Use it to go back up the folder structure.",
+          "example": "{{command}}cd ..{{/command}} - Moves up one folder level.\n{{command}}cd ~{{/command}} - Goes to your home folder.",
+          "exercise": "Create a new folder. Move into that folder. Create another folder inside it. Check your location. Go back up one level. Check your location again to confirm you moved correctly."
         },
         {
           "title": "Making Your First File",
-          "content": "Creating and editing files is essential. You'll start with simple text files using the Nano editor, which is beginner-friendly.\n\nNano is a simple text editor that runs in the terminal. It shows you what you're typing and has basic commands at the bottom of the screen. The most important shortcuts are: Ctrl+O to save and Ctrl+X to exit.\n\nWhen you create a file with touch, it's empty. When you use nano, you can actually type content into it. This is how you'll write notes, scripts, and code.\n\nNano has a learning curve but it's the simplest editor to start with. The commands are shown at the bottom of the screen while you're using it.",
-          "exercise": "Create a file called 'journal.txt' using touch journal.txt. Then open it with nano journal.txt. Write today's date and a short note about what you're learning. Save it with Ctrl+O, press Enter to confirm, and exit with Ctrl+X. Then view your file with cat journal.txt."
+          "content": "Creating and editing files is essential. You'll start with simple text files using the Nano editor, which is beginner-friendly.\n\nNano is a simple text editor that runs in the terminal. It shows you what you're typing and has basic commands at the bottom of the screen. The most important shortcuts are: Ctrl+O to save and Ctrl+X to exit.\n\nWhen you create a file with {{command}}touch{{/command}}, it's empty. When you use {{command}}nano{{/command}}, you can actually type content into it. This is how you'll write notes, scripts, and code.\n\nNano has a learning curve but it's the simplest editor to start with. The commands are shown at the bottom of the screen while you're using it.",
+          "example": "{{command}}touch mynote.txt{{/command}} - Creates an empty file.\n{{command}}nano mynote.txt{{/command}} - Opens it for editing.",
+          "exercise": "Create an empty text file. Open it with the Nano editor. Write a short message about what you're learning. Save your changes and exit. Then view the contents of your file."
         }
       ]
     },
     "essential-commands": {
       "title": "Essential Commands",
       "icon": "fa-star",
-      "description": "The most important commands you'll use every day. These are your bread and butter — memorize them and you'll be able to navigate any terminal environment with confidence.",
+      "description": "The most important commands you'll use every day. Memorize these and you'll navigate any terminal with confidence.",
       "items": [
         {
           "title": "The Three Most Important Commands",
-          "content": "Memorize these three commands. You will use them constantly in your terminal journey. They are your navigation tools.\n\nls tells you what's in the current folder. cd moves you to a different folder. pwd tells you exactly where you are.\n\nWhen you're lost or confused, use these three commands to reorient yourself. pwd shows where you are, ls shows what's around you, and cd takes you where you want to go.\n\nThe ls command can be enhanced with options like -l for detailed view or -a to show hidden files. These make it even more useful.",
-          "exercise": "Practice navigating: Go to your home folder with cd ~, list what's there with ls, go into a folder with cd foldername, check your location with pwd, and come back with cd .. or cd ~. Do this 5 times until it's automatic."
+          "content": "Memorize these three commands. You will use them constantly in your terminal journey. They are your navigation tools.\n\n{{command}}ls{{/command}} tells you what's in the current folder. {{command}}cd{{/command}} moves you to a different folder. {{command}}pwd{{/command}} tells you exactly where you are.\n\nWhen you're lost or confused, use these three commands to reorient yourself. {{command}}pwd{{/command}} shows where you are, {{command}}ls{{/command}} shows what's around you, and {{command}}cd{{/command}} takes you where you want to go.",
+          "example": "{{command}}ls{{/command}} - Lists files.\n{{command}}cd /{{/command}} - Goes to root.\n{{command}}pwd{{/command}} - Shows current location.",
+          "exercise": "Go to your home folder. List everything there. Go to the root directory. Check your location. Come back to your home folder. Do this sequence 5 times until you can do it without thinking."
         },
         {
           "title": "Common Beginner Mistakes",
-          "content": "Everyone makes mistakes when learning the terminal. Don't feel bad when you see errors — they're part of the learning process.\n\nThe most common mistakes are forgetting spaces (commands need spaces between parts), wrong capitalization (Linux is case-sensitive), and typos.\n\nError messages might look scary but they usually tell you exactly what went wrong. command not found means you typed something that doesn't exist. No such file or directory means the file or folder you mentioned doesn't exist where you are.\n\nLearning to read error messages is a valuable skill. They often contain the exact information you need to fix the problem.",
-          "exercise": "Try making each mistake on purpose: type pwdDocuments (no space), type Ls (capital L), type delet file.txt (wrong command). See what each error message says. Understanding error messages is a superpower!"
+          "content": "Everyone makes mistakes when learning the terminal. Don't feel bad when you see errors — they're part of the learning process.\n\nThe most common mistakes are forgetting spaces (commands need spaces between parts), wrong capitalization (Linux is case-sensitive), and typos.\n\nError messages might look scary but they usually tell you exactly what went wrong. 'command not found' means you typed something that doesn't exist. 'No such file or directory' means the file or folder you mentioned doesn't exist where you are.\n\nLearning to read error messages is a valuable skill. They often contain the exact information you need to fix the problem.",
+          "example": "{{command}}pwdDocuments{{/command}} - Error: command not found.\n{{command}}Ls{{/command}} - Error: command not found.",
+          "exercise": "Try making each of the common mistakes mentioned. Type a command without a space between the command and its argument. Type a command with the wrong capitalization. Type a command that doesn't exist. Read each error message carefully."
         },
         {
           "title": "Getting Help",
-          "content": "When you're stuck, Termux has built-in help systems. You don't need to memorize everything.\n\nMost commands have a --help option that shows a quick reference. For more detailed information, you can use the man (manual) command.\n\nYou can also use the history command to see what you've typed before and re-run commands with !number.\n\nThe man pages are comprehensive but sometimes overwhelming. Start with --help for quick reference, then use man for deeper understanding.",
-          "exercise": "Try ls --help and scroll through the options. Then install man with pkg install man and read the manual for pwd with man pwd. Press Q to exit the manual. Then try history to see your command history."
+          "content": "When you're stuck, Termux has built-in help systems. You don't need to memorize everything.\n\nMost commands have a {{command}}--help{{/command}} option that shows a quick reference. For more detailed information, you can use the {{command}}man{{/command}} (manual) command.\n\nYou can also use the {{command}}history{{/command}} command to see what you've typed before and re-run commands with {{command}}!number{{/command}}.",
+          "example": "{{command}}ls --help{{/command}} - Shows ls options.\n{{command}}man pwd{{/command}} - Shows pwd manual.",
+          "exercise": "View the help page for the ls command. Install the manual pages system. Read the manual for the pwd command. View your command history and re-run a previous command using its number."
         }
       ]
     },
     "mini-project": {
       "title": "Mini Project",
       "icon": "fa-project-diagram",
-      "description": "Put everything together in a real project. This is where you'll apply all the commands you've learned in a practical scenario, building confidence through hands-on practice.",
+      "description": "Put everything together in a real project. Apply all the commands you've learned in a practical scenario.",
       "items": [
         {
           "title": "Your First Mini Project: A Journal",
-          "content": "Now you'll put everything together. Create a daily journal to practice all the commands you've learned.\n\nThis project uses: mkdir to create folders, cd to navigate, nano to write, cat to read, cp to backup, and ls to check your work.\n\nStart by creating a journal folder, then write your first entry. Make a backup copy to practice the cp command. Finally, use ls -la to see all the details of your files.\n\nThis workflow mirrors what developers do every day: creating files, editing them, backing them up, and checking their work.",
-          "exercise": "Create a journal folder with mkdir journal. Navigate into it with cd journal. Create today's entry with nano 2026-04-08.txt. Write your entry, save with Ctrl+O, exit with Ctrl+X. Read it with cat. Make a backup with cp 2026-04-08.txt backup.txt. See all entries with ls -la."
+          "content": "Now you'll put everything together. Create a daily journal to practice all the commands you've learned.\n\nThis project uses: {{command}}mkdir{{/command}} to create folders, {{command}}cd{{/command}} to navigate, {{command}}nano{{/command}} to write, {{command}}cat{{/command}} to read, {{command}}cp{{/command}} to backup, and {{command}}ls{{/command}} to check your work.\n\nStart by creating a journal folder, then write your first entry. Make a backup copy to practice the {{command}}cp{{/command}} command. Finally, use {{command}}ls -la{{/command}} to see all the details of your files.",
+          "example": "{{command}}mkdir journal{{/command}} - Creates journal folder.\n{{command}}nano 2026-04-08.txt{{/command}} - Creates and opens entry file.",
+          "exercise": "Create a folder for your journal. Navigate into it. Create a text file with today's date as the name. Write a short entry about what you learned today. Save it and exit. Read your entry. Create a backup copy of your entry. View all files in your journal folder with detailed information."
         },
         {
           "title": "What To Do Next",
-          "content": "Congratulations! You've completed the beginner guide. Here's your path forward to becoming a terminal power user.\n\nYou've learned: what a terminal is, how to read the prompt, navigation with pwd/ls/cd, file operations like touch/nano/cat/cp, and how to get help.\n\nNow it's time to explore the main course where you'll learn about package management, Git, Python, networking, and much more.\n\nRemember: the terminal is a skill that improves with practice. Keep using it daily and you'll become more comfortable and efficient.",
-          "exercise": "Create a folder called 'challenge' with mkdir challenge. Inside it, create a file called 'done.txt' with the text 'I completed the beginner guide!' using echo. Make a backup copy called 'done_backup.txt' with cp. List everything with details using ls -la. You've now used mkdir, cd, echo, cp, and ls -la."
+          "content": "Congratulations! You've completed the beginner guide. Here's your path forward to becoming a terminal power user.\n\nYou've learned: what a terminal is, how to read the prompt, navigation with {{command}}pwd{{/command}}, {{command}}ls{{/command}}, {{command}}cd{{/command}}, file operations like {{command}}touch{{/command}}, {{command}}nano{{/command}}, {{command}}cat{{/command}}, {{command}}cp{{/command}}, and how to get help.\n\nNow it's time to explore the main course where you'll learn about package management, Git, Python, networking, and much more.",
+          "example": "{{command}}mkdir challenge{{/command}} - Creates challenge folder.\n{{command}}echo 'Done' > done.txt{{/command}} - Creates file with text.",
+          "exercise": "Create a folder called 'challenge' in your home directory. Inside it, create a text file that says 'I completed the beginner guide!' using the echo command. Create a backup copy of that file. List all files in the challenge folder with detailed information to confirm everything is there."
         }
       ]
     }
@@ -88,84 +99,160 @@
     "getting-started": {
       "title": "Getting Started",
       "icon": "fa-rocket",
-      "description": "Install and set up Termux properly on your device. This section covers everything from downloading the right version to verifying your installation works correctly.",
+      "description": "Install and set up Termux properly on your device. Get the right version and verify everything works.",
       "items": [
         {
           "title": "Where to Download Termux",
-          "content": "The Google Play Store version is abandoned and broken. Always use the F-Droid version for the best experience with regular updates.\n\nF-Droid is an open-source app store that provides the official, maintained version of Termux. The Play Store version was abandoned by the developers and is severely outdated.\n\nAfter installing from F-Droid, open the app and wait. The first launch takes 10-30 seconds to set up the environment.\n\nInstalling from F-Droid also gives you access to the latest features and security updates that the Play Store version lacks.",
-          "exercise": "Go to F-Droid on your device, search for Termux, and check the version number. Make sure you're running the latest version. If you have the Play Store version, uninstall it and install from F-Droid."
+          "content": "The Google Play Store version is abandoned and broken. Always use the F-Droid version for the best experience with regular updates.\n\nF-Droid is an open-source app store that provides the official, maintained version of Termux. The Play Store version was abandoned by the developers and is severely outdated.\n\nAfter installing from F-Droid, open the app and wait. The first launch takes 10-30 seconds to set up the environment.",
+          "example": "{{command}}pkg --version{{/command}} - Check your Termux version to verify you're on the latest build.",
+          "exercise": "Go to F-Droid on your device. Search for Termux. Check the version number shown. If you have the Play Store version installed, back up your files, uninstall it, and install from F-Droid."
         },
         {
           "title": "First Launch and Initial Setup",
-          "content": "When Termux first opens, you'll see a black screen with white text and a $ symbol. This is your terminal prompt — it means Termux is ready for your commands.\n\nThe first thing you should do is update everything. This ensures you have the latest package list and all software is up to date.\n\nRun pkg update first to refresh the package list, then pkg upgrade to install any updates. When prompted 'Do you want to continue?', type Y and press Enter.\n\nThis two-step process is essential. It ensures your Termux environment is current and secure.",
-          "exercise": "Run pkg update and watch how it fetches the latest package lists. Then run pkg upgrade and observe what gets updated. This is the first thing you should do every time you open Termux."
+          "content": "When Termux first opens, you'll see a black screen with white text and a $ symbol. This is your terminal prompt — it means Termux is ready for your commands.\n\nThe first thing you should do is update everything. This ensures you have the latest package list and all software is up to date.\n\nRun {{command}}pkg update{{/command}} first to refresh the package list, then {{command}}pkg upgrade{{/command}} to install any updates. When prompted 'Do you want to continue?', type Y and press Enter.",
+          "example": "{{command}}pkg update{{/command}} - Refreshes package list.\n{{command}}pkg upgrade{{/command}} - Installs updates.",
+          "exercise": "Run the command to refresh your package list. Then run the command to upgrade all installed packages. Watch the output carefully to see what's being updated."
         },
         {
           "title": "Grant Storage Access",
-          "content": "Termux needs permission to see your Android files like photos, downloads, and documents. This is essential for working with your phone's files.\n\nRun the termux-setup-storage command. Termux will ask for permission to access your storage. Tap 'Allow'.\n\nAfter this, you'll have access to your Android storage at ~/storage/shared/. This folder is a link to your phone's internal storage.\n\nWithout this step, you won't be able to access your Android files from Termux, which limits what you can do.",
-          "exercise": "Run termux-setup-storage and grant permission when prompted. Then navigate to your Downloads folder using cd ~/storage/shared/Downloads. List the files there with ls. You should see your downloaded files."
+          "content": "Termux needs permission to see your Android files like photos, downloads, and documents. This is essential for working with your phone's files.\n\nRun the {{command}}termux-setup-storage{{/command}} command. Termux will ask for permission to access your storage. Tap 'Allow'.\n\nAfter this, you'll have access to your Android storage at ~/storage/shared/. This folder is a link to your phone's internal storage.",
+          "example": "{{command}}termux-setup-storage{{/command}} - Sets up storage access.\n{{command}}ls ~/storage/shared/Download/{{/command}} - Lists Downloads folder.",
+          "exercise": "Run the storage setup command and grant permission when prompted. Navigate to your Downloads folder. List the files there to confirm you can see your Android files."
         },
         {
           "title": "Verify Everything Works",
-          "content": "Run these tests to confirm your Termux installation is working correctly. This will catch any issues early.\n\nTest 1 checks that the package manager works. Test 2 verifies storage access. Test 3 confirms you can create and read files. Test 4 checks your internet connection.\n\nIf all tests pass, your Termux is ready for serious work. If any fail, go back and troubleshoot the specific issue.\n\nThese tests are quick and give you confidence that everything is set up properly.",
-          "exercise": "Run all four test commands: pkg --version to check the version, ls ~/storage/shared/ to check storage, echo 'Termux is working' > test.txt and cat test.txt to test file creation, and ping -c 2 google.com to test connectivity. If all pass, your Termux is ready!"
+          "content": "Run these tests to confirm your Termux installation is working correctly. This will catch any issues early.\n\nTest 1 checks that the package manager works. Test 2 verifies storage access. Test 3 confirms you can create and read files. Test 4 checks your internet connection.\n\nIf all tests pass, your Termux is ready for serious work. If any fail, go back and troubleshoot the specific issue.",
+          "example": "{{command}}pkg --version{{/command}} - Shows version.\n{{command}}ls ~/storage/shared/{{/command}} - Lists Android storage.",
+          "exercise": "Run the command to check Termux version. Run the command to list your Android storage. Create a test file and read it back. Test your internet connection by pinging a website. Confirm all four tests pass."
         },
         {
           "title": "Understanding Termux Storage",
-          "content": "Termux has its own private storage separate from Android. This is for security — other apps can't see your Termux files by default.\n\nYour Termux home folder is at /data/data/com.termux/files/home/. This is private to Termux. Other apps on your phone cannot access this folder.\n\nTo share files with other apps, you need to copy them to the shared storage at ~/storage/shared/. This folder is accessible by both Termux and Android apps.\n\nUnderstanding this separation is important for organizing your files and keeping sensitive data secure.",
-          "exercise": "Create a file in Termux with echo 'Hello Termux' > private.txt. Then copy it to your Android Documents folder with cp private.txt ~/storage/shared/Documents/. Verify it appears there using a file explorer app on your phone."
+          "content": "Termux has its own private storage separate from Android. This is for security — other apps can't see your Termux files by default.\n\nYour Termux home folder is at /data/data/com.termux/files/home/. This is private to Termux. Other apps on your phone cannot access this folder.\n\nTo share files with other apps, you need to copy them to the shared storage at ~/storage/shared/. This folder is accessible by both Termux and Android apps.",
+          "example": "{{command}}cp private.txt ~/storage/shared/Documents/{{/command}} - Copies file to shared storage.",
+          "exercise": "Create a file in your Termux home directory. Copy that file to your Android Documents folder. Use your phone's file manager app to verify the file is now visible there."
         }
       ]
     },
     "basic-commands": {
       "title": "Basic Commands",
       "icon": "fa-terminal",
-      "description": "Master the fundamental commands for file management and navigation. These are the commands you'll use every single day, so getting comfortable with them is essential.",
+      "description": "Master the fundamental commands for file management and navigation. These are the commands you'll use every single day.",
       "items": [
         {
           "title": "pwd - Where Am I?",
-          "content": "pwd stands for Print Working Directory. It shows your exact location in the file system.\n\nUse this command whenever you feel lost. It tells you exactly which folder you're in. This is especially useful when you've been navigating through multiple folders.\n\nIf you ever get completely lost, type cd ~ to go to your home folder, then pwd to confirm you're back home.\n\nThe output of pwd is a full path starting from the root of the file system, which helps you understand exactly where you are.",
-          "exercise": "Navigate to different folders and run pwd each time. Start in your home folder, go to /data, go to ~/storage, and run pwd at each location. See how the output changes to show your current location."
+          "content": "{{command}}pwd{{/command}} stands for Print Working Directory. It shows your exact location in the file system.\n\nUse this command whenever you feel lost. It tells you exactly which folder you're in. This is especially useful when you've been navigating through multiple folders.\n\nIf you ever get completely lost, type {{command}}cd ~{{/command}} to go to your home folder, then {{command}}pwd{{/command}} to confirm you're back home.",
+          "example": "{{command}}pwd{{/command}} - Shows current folder path.",
+          "exercise": "Navigate to several different folders. After each move, check your location. Then go to your home folder and confirm you're there."
         },
         {
           "title": "ls - What Is Here?",
-          "content": "ls lists all files and folders in your current location. Use it to explore and see what you're working with.\n\nBy itself, ls shows just the names. Add -l for a detailed list with permissions, size, and date. Add -a to show hidden files (files starting with a dot).\n\nYou can also combine flags: ls -la shows everything in long format with hidden files included.\n\nThe ls command is your primary tool for exploring the file system and understanding what's in each folder.",
-          "exercise": "Create some files and folders: touch file1.txt file2.txt and mkdir testfolder. Then use ls with different flags: ls (basic), ls -l (detailed), ls -a (including hidden), and ls -la (all details). Notice how the output changes with each flag."
+          "content": "{{command}}ls{{/command}} lists all files and folders in your current location. Use it to explore and see what you're working with.\n\nBy itself, {{command}}ls{{/command}} shows just the names. Add {{command}}-l{{/command}} for a detailed list with permissions, size, and date. Add {{command}}-a{{/command}} to show hidden files (files starting with a dot).\n\nYou can also combine flags: {{command}}ls -la{{/command}} shows everything in long format with hidden files included.",
+          "example": "{{command}}ls{{/command}} - Basic list.\n{{command}}ls -la{{/command}} - Detailed list with hidden files.",
+          "exercise": "Create a few files and a folder. Use the basic list command. Then use the detailed list with permissions. Then include hidden files in your list. Compare the outputs."
         },
         {
           "title": "cd - Go There",
-          "content": "cd stands for Change Directory. It moves you into different folders. It's how you navigate the file system.\n\nUse cd folder_name to go into a folder. Use cd .. to go up one level (to the parent folder). cd ~ takes you to your home folder from anywhere.\n\nTab completion is a great time-saver: type cd Docu and press Tab — it will auto-complete to cd Documents/ if that folder exists.\n\nThe cd command is how you move around the file system. Combined with pwd and ls, you can explore any part of your device.",
-          "exercise": "Practice navigating: go to root with cd /, then to your home with cd ~, then to a subfolder. Use pwd to verify each step. Try using Tab completion to navigate to folders faster."
+          "content": "{{command}}cd{{/command}} stands for Change Directory. It moves you into different folders. It's how you navigate the file system.\n\nUse {{command}}cd folder_name{{/command}} to go into a folder. Use {{command}}cd ..{{/command}} to go up one level (to the parent folder). {{command}}cd ~{{/command}} takes you to your home folder from anywhere.\n\nTab completion is a great time-saver: type {{command}}cd Docu{{/command}} and press Tab — it will auto-complete to {{command}}cd Documents/{{/command}} if that folder exists.",
+          "example": "{{command}}cd projects/{{/command}} - Goes into projects folder.\n{{command}}cd ..{{/command}} - Goes up one level.",
+          "exercise": "Navigate to the root directory. Then go to your home folder. Then go into a subfolder. Then go up one level. Use the tab completion feature to navigate to a folder."
         },
         {
           "title": "mkdir - Create Folders",
-          "content": "mkdir stands for Make Directory. It creates new folders to organize your files.\n\nAlways use lowercase names without spaces for compatibility. Use underscores or hyphens instead of spaces: my_folder or my-folder.\n\nYou can create multiple folders at once by listing them all after the command.\n\nOrganizing your files into folders is essential for keeping your work tidy and easy to find.",
-          "exercise": "Create a folder structure: mkdir projects and then mkdir projects/python projects/web projects/data. Use ls -R projects to see the nested structure. Then create multiple folders at once with mkdir folder1 folder2 folder3."
+          "content": "{{command}}mkdir{{/command}} stands for Make Directory. It creates new folders to organize your files.\n\nAlways use lowercase names without spaces for compatibility. Use underscores or hyphens instead of spaces: my_folder or my-folder.\n\nYou can create multiple folders at once by listing them all after the command.",
+          "example": "{{command}}mkdir projects{{/command}} - Creates a folder.\n{{command}}mkdir web mobile{{/command}} - Creates two folders.",
+          "exercise": "Create a main folder. Then create multiple subfolders inside it at once. Use the recursive list command to verify your folder structure."
         },
         {
           "title": "touch - Create Empty Files",
-          "content": "touch creates an empty file. It's also used to update a file's timestamp to the current time.\n\nIf the file doesn't exist, touch creates it. If it already exists, touch updates its modification time without changing the content.\n\nYou can create multiple files at once by listing all their names.\n\ntouch is useful for creating placeholder files or updating timestamps for build systems and scripts.",
-          "exercise": "Create several empty files: touch file1.txt file2.txt file3.txt. Then use ls -l to see their timestamps. Use touch again on one file to update its timestamp: touch file1.txt. Check ls -l again to see the timestamp change."
+          "content": "{{command}}touch{{/command}} creates an empty file. It's also used to update a file's timestamp to the current time.\n\nIf the file doesn't exist, {{command}}touch{{/command}} creates it. If it already exists, {{command}}touch{{/command}} updates its modification time without changing the content.\n\nYou can create multiple files at once by listing all their names.",
+          "example": "{{command}}touch file.txt{{/command}} - Creates empty file.\n{{command}}touch file1.txt file2.txt{{/command}} - Creates two files.",
+          "exercise": "Create several empty files. Check their timestamps. Then use touch on one file to update its timestamp. Verify the timestamp changed."
         },
         {
           "title": "cat - Read Files",
-          "content": "cat displays the entire contents of a file. It's great for small files but can overwhelm your screen for large ones.\n\nFor large files, use less to scroll through page by page, head to see the first few lines, or tail to see the last few lines.\n\ncat can also combine multiple files: cat file1.txt file2.txt shows both one after another.\n\nUnderstanding the limitations of cat helps you choose the right tool for viewing files.",
-          "exercise": "Create a file with 20 lines of text. Use cat to view it all, then use head -5 to see the first 5 lines, and tail -5 to see the last 5 lines. Notice how each command shows different parts of the file."
+          "content": "{{command}}cat{{/command}} displays the entire contents of a file. It's great for small files but can overwhelm your screen for large ones.\n\nFor large files, use {{command}}less{{/command}} to scroll through page by page, {{command}}head{{/command}} to see the first few lines, or {{command}}tail{{/command}} to see the last few lines.\n\n{{command}}cat{{/command}} can also combine multiple files: {{command}}cat file1.txt file2.txt{{/command}} shows both one after another.",
+          "example": "{{command}}cat notes.txt{{/command}} - Shows entire file.\n{{command}}head -3 notes.txt{{/command}} - Shows first 3 lines.",
+          "exercise": "Create a file with multiple lines of text. View the entire file. Then view only the first few lines. Then view only the last few lines."
         },
         {
           "title": "cp - Copy Files",
-          "content": "cp stands for Copy. It creates a copy of a file or folder. The original remains unchanged, and you get a duplicate.\n\nTo copy a folder and everything inside it, use -r (recursive). To preserve timestamps and permissions, use -p.\n\nCopying is safe — it never changes the original file. Use it for backups or creating new versions.\n\ncp is one of the most frequently used commands. Mastering it is essential for managing files.",
-          "exercise": "Create a file with echo 'Hello' > original.txt. Copy it to a new name with cp original.txt copy.txt. Then copy it to a different folder with cp original.txt ~/storage/shared/Documents/. Verify both copies exist with ls."
+          "content": "{{command}}cp{{/command}} stands for Copy. It creates a copy of a file or folder. The original remains unchanged, and you get a duplicate.\n\nTo copy a folder and everything inside it, use {{command}}-r{{/command}} (recursive). To preserve timestamps and permissions, use {{command}}-p{{/command}}.\n\nCopying is safe — it never changes the original file. Use it for backups or creating new versions.",
+          "example": "{{command}}cp file.txt backup.txt{{/command}} - Copies file.\n{{command}}cp -r project/ project-backup/{{/command}} - Copies folder.",
+          "exercise": "Create a file with some content. Copy it to a new name. Verify both files exist. Then copy the file to a different folder."
         },
         {
           "title": "mv - Move or Rename",
-          "content": "mv stands for Move. It moves files to different locations OR renames them. Unlike cp, no copy is created — the file actually moves.\n\nWhen you use mv to rename a file, it stays in the same folder but gets a new name. When you use it to move a file, it goes to a different folder.\n\nThe difference from cp: cp makes a duplicate, mv actually moves the file (no copy remains in the original location).",
-          "exercise": "Create a file with echo 'Test' > file.txt. Rename it with mv file.txt renamed.txt. Then move it to a different folder with mkdir testfolder && mv renamed.txt testfolder/. Use ls to verify the original location is now empty and ls testfolder/ to see the file in the new location."
+          "content": "{{command}}mv{{/command}} stands for Move. It moves files to different locations OR renames them. Unlike {{command}}cp{{/command}}, no copy is created — the file actually moves.\n\nWhen you use {{command}}mv{{/command}} to rename a file, it stays in the same folder but gets a new name. When you use it to move a file, it goes to a different folder.\n\nThe difference from {{command}}cp{{/command}}: {{command}}cp{{/command}} makes a duplicate, {{command}}mv{{/command}} actually moves the file (no copy remains in the original location).",
+          "example": "{{command}}mv oldname.txt newname.txt{{/command}} - Renames file.\n{{command}}mv file.txt ~/Documents/{{/command}} - Moves file.",
+          "exercise": "Create a file. Rename it. Then move it to a different folder. Verify the original location is now empty and the file is in the new location."
         },
         {
           "title": "rm - Delete Files",
-          "content": "rm stands for Remove. It permanently deletes files. There is NO undo — be very careful with this command.\n\nAlways use -i (interactive) when learning — it asks for confirmation before deleting each file. Use ls first to see what you're deleting before running rm.\n\nNever run rm -rf / — this would delete everything in Termux. Be extremely careful with recursive deletion (-r) and force (-f) flags.\n\nThe rm command is powerful but dangerous. Always double-check what you're deleting.",
-          "exercise": "Create several test files with touch test1.txt test2.txt test3.txt. Use rm -i test1.txt to delete with confirmation. Then delete all remaining files with rm *.txt. Notice how the -i flag asks for confirmation before each deletion."
+          "content": "{{command}}rm{{/command}} stands for Remove. It permanently deletes files. There is NO undo — be very careful with this command.\n\nAlways use {{command}}-i{{/command}} (interactive) when learning — it asks for confirmation before deleting each file. Use {{command}}ls{{/command}} first to see what you're deleting before running {{command}}rm{{/command}}.\n\nNever run {{command}}rm -rf /{{/command}} — this would delete everything in Termux. Be extremely careful with recursive deletion ({{command}}-r{{/command}}) and force ({{command}}-f{{/command}}) flags.",
+          "example": "{{command}}rm -i file.txt{{/command}} - Deletes with confirmation.\n{{command}}rm *.txt{{/command}} - Deletes all .txt files.",
+          "exercise": "Create several test files. Delete one file with confirmation. Delete the remaining files all at once. Use ls to verify the files are gone."
+        },
+        {
+          "title": "echo - Print Text",
+          "content": "{{command}}echo{{/command}} prints text to the screen. It's one of the simplest commands but also one of the most useful for scripting and testing.\n\nYou can use {{command}}echo{{/command}} to display messages, check environment variables, or create files with content using redirection.\n\nWhen combined with {{command}}> {{/command}} (redirection), {{command}}echo{{/command}} can write content directly to a file, creating it if it doesn't exist.",
+          "example": "{{command}}echo 'Hello World'{{/command}} - Prints message.\n{{command}}echo 'Hello' > file.txt{{/command}} - Writes to file.",
+          "exercise": "Print a message to the screen. Print the value of the HOME environment variable. Create a file with content using echo and redirection."
+        }
+      ]
+    },
+    "file-system": {
+      "title": "File System",
+      "icon": "fa-folder-tree",
+      "description": "Understand the Termux file system structure and paths. Knowing where things are and how paths work is essential.",
+      "items": [
+        {
+          "title": "Termux Directory Structure",
+          "content": "Termux has its own isolated file system. Understanding where things are helps you navigate efficiently.\n\nYour home folder (~) is where all your personal files and projects should go. This is the default location when you open Termux.\n\nThe packages folder ($PREFIX) is where installed software lives. You rarely need to touch this.\n\nAfter running {{command}}termux-setup-storage{{/command}}, you can access your Android storage at ~/storage/shared/.",
+          "example": "{{command}}cd ~{{/command}} - Goes to home.\n{{command}}cd $PREFIX{{/command}} - Goes to packages folder.",
+          "exercise": "Navigate to each of these folders and use ls to see what's inside: home, packages folder, and Android storage."
+        },
+        {
+          "title": "Absolute vs Relative Paths",
+          "content": "Paths tell the computer where a file is. Understanding the difference is crucial for navigating efficiently.\n\nAn absolute path starts from the root (/) and works no matter where you are. Example: /data/data/com.termux/files/home/practice/mynote.txt\n\nA relative path starts from your current location. Example: practice/mynote.txt (only works if you're in the home folder).\n\nSpecial shortcuts: . (current folder), .. (parent folder), ~ (home folder), - (previous folder).",
+          "example": "{{command}}cd /data/data/com.termux/files/home{{/command}} - Absolute path.\n{{command}}cd ~{{/command}} - Relative shortcut.",
+          "exercise": "Navigate using absolute path. Then navigate using relative path. Use pwd to verify your location each time."
+        },
+        {
+          "title": "Viewing Files with less and head/tail",
+          "content": "For large files, cat is not practical. Use less, head, and tail instead.\n\nless lets you scroll through a file page by page. Use Space for next page, b for previous, q to quit, and / to search.\n\nhead shows the beginning of a file (first 10 lines by default). tail shows the end (last 10 lines by default). Use -n to specify a different number of lines.",
+          "example": "{{command}}less file.txt{{/command}} - Scroll through file.\n{{command}}head -20 file.txt{{/command}} - Shows first 20 lines.",
+          "exercise": "Create a file with 50 lines of text. Use head, tail, and less to view different parts of it."
+        }
+      ]
+    },
+    "storage-access": {
+      "title": "Storage Access",
+      "icon": "fa-database",
+      "description": "Access and manage files on your Android device from Termux. This covers setting up storage access and working with Android files.",
+      "items": [
+        {
+          "title": "Setting Up Storage Access",
+          "content": "Before you can access your Android files, you need to run {{command}}termux-setup-storage{{/command}}. This command requests permission to access your phone's storage.\n\nAfter you grant permission, you'll have access to your Android storage through ~/storage/. You'll see folders like shared/, downloads/, dcim/, pictures/, music/, and movies/.\n\nIf storage doesn't work properly, try removing the storage folder and setting it up again with {{command}}rm -rf ~/storage && termux-setup-storage{{/command}}.",
+          "example": "{{command}}termux-setup-storage{{/command}} - Sets up storage.\n{{command}}ls ~/storage/{{/command}} - Lists storage folders.",
+          "exercise": "Run the storage setup command and grant permission. Navigate to Downloads and list the files to confirm access."
+        },
+        {
+          "title": "Accessing Android Folders",
+          "content": "After setup, your Android storage is accessible through ~/storage/. Each folder maps to a different part of your Android storage.\n\n~/storage/shared/ is the root of your internal storage. The shortcuts like downloads/, dcim/, pictures/, music/, movies/, and documents/ give you quick access to specific folders.\n\nYou can navigate to these folders, list files, copy, move, and delete files just like any other folder in Termux.",
+          "example": "{{command}}cd ~/storage/shared/Downloads{{/command}} - Goes to Downloads.\n{{command}}ls ~/storage/shared/DCIM/Camera/{{/command}} - Lists camera photos.",
+          "exercise": "Navigate to your Downloads folder and list the files. Copy a file from there to your Termux home folder. Then navigate to your DCIM folder and list the photos there."
+        },
+        {
+          "title": "Moving Files Between Environments",
+          "content": "Termux private storage and Android shared storage are separate. You need to explicitly copy or move files between them.\n\nTo copy from Termux to Android: {{command}}cp ~/file.txt ~/storage/shared/Documents/{{/command}}\n\nTo copy from Android to Termux: {{command}}cp ~/storage/shared/Download/document.pdf ~/{{/command}}\n\nUse {{command}}-r{{/command}} to copy entire folders (recursive). Use {{command}}mv{{/command}} instead of {{command}}cp{{/command}} if you want to move (rather than copy) the file.",
+          "example": "{{command}}cp myfile.txt ~/storage/shared/Documents/{{/command}} - Copies to Android.\n{{command}}mv ~/storage/shared/Download/file.pdf ~/{{/command}} - Moves to Termux.",
+          "exercise": "Create a file in Termux. Copy it to your Android Documents folder. Verify it appears there. Then move a file from Android to Termux."
+        },
+        {
+          "title": "Working with External SD Cards",
+          "content": "If your device has an SD card, you can access it from Termux. The location varies by device.\n\nCommon SD card mount points are /storage/sdcard1/ or /storage/XXXX-XXXX/ (where XXXX is a long alphanumeric string).\n\nYou can create a symlink for easier access: {{command}}ln -s /storage/sdcard1 ~/sdcard{{/command}}. Then you can just use {{command}}cd ~/sdcard{{/command}} to access your SD card.",
+          "example": "{{command}}ls /storage/{{/command}} - Lists storage devices.\n{{command}}ln -s /storage/sdcard1 ~/sdcard{{/command}} - Creates symlink.",
+          "exercise": "Check if you have an SD card mounted. If found, create a symlink for easier access and navigate to it."
         }
       ]
     },
@@ -176,99 +263,70 @@
       "items": [
         {
           "title": "What is a Package Manager?",
-          "content": "A package manager is like an app store for the command line. It downloads, installs, and manages software automatically.\n\nTermux uses pkg as its package manager. When you tell it what to install, it handles everything: finding the software, downloading it, installing dependencies, and setting it up correctly.\n\nThe benefits are huge: automatic dependency handling, easy updates for all software, clean uninstallation, and verified safe packages from trusted repositories.\n\nWithout a package manager, you'd have to manually find, download, and install each piece of software and its dependencies.",
-          "exercise": "Search for Python packages using pkg search python. Install a small package like nano if you don't have it with pkg install nano. Then check what's installed with pkg list-installed."
+          "content": "A package manager is like an app store for the command line. It downloads, installs, and manages software automatically.\n\nTermux uses {{command}}pkg{{/command}} as its package manager. When you tell it what to install, it handles everything: finding the software, downloading it, installing dependencies, and setting it up correctly.\n\nThe benefits are huge: automatic dependency handling, easy updates for all software, clean uninstallation, and verified safe packages from trusted repositories.",
+          "example": "{{command}}pkg install python{{/command}} - Installs Python.\n{{command}}pkg uninstall python{{/command}} - Removes Python.",
+          "exercise": "Search for a package related to Python. Install the nano text editor if you don't have it. List all the packages you have installed."
         },
         {
           "title": "Essential pkg Commands",
-          "content": "These are the only pkg commands you need to know. Memorize them and you can manage any package.\n\nAlways start with pkg update to refresh the list of available packages, then pkg upgrade to install updates. This should be your first action whenever you open Termux.\n\nUse pkg search to find packages, pkg install to install them, and pkg uninstall to remove them.\n\nThe pkg clean command removes downloaded package files, which frees up space on your device.",
-          "exercise": "Practice the full package cycle: pkg update to refresh, pkg search htop to find it, pkg install htop to install it, htop to run it (press Q to quit), pkg uninstall htop to remove it, and pkg clean to clean up. This is the complete package management workflow."
+          "content": "These are the only {{command}}pkg{{/command}} commands you need to know. Memorize them and you can manage any package.\n\nAlways start with {{command}}pkg update{{/command}} to refresh the list of available packages, then {{command}}pkg upgrade{{/command}} to install updates. This should be your first action whenever you open Termux.\n\nUse {{command}}pkg search{{/command}} to find packages, {{command}}pkg install{{/command}} to install them, and {{command}}pkg uninstall{{/command}} to remove them.\n\nThe {{command}}pkg clean{{/command}} command removes downloaded package files, which frees up space on your device.",
+          "example": "{{command}}pkg search htop{{/command}} - Searches for htop.\n{{command}}pkg install htop{{/command}} - Installs it.",
+          "exercise": "Refresh your package list. Search for a package called 'htop'. Install it. Run it and press Q to quit. Uninstall it. Clean up downloaded package files."
         },
         {
           "title": "Must-Have Packages",
-          "content": "These packages are essential for any Termux user. Install them to unlock the full potential of your terminal.\n\nText editors: nano (simple, beginner-friendly) and vim (powerful, steeper learning curve). File downloading: wget and curl. Programming: python and nodejs. Version control: git. System access: openssh for remote connections. Utilities: tree for folder visualization, htop for task management, man for manual pages.\n\nThese packages will give you a complete development environment on your phone.",
-          "exercise": "Install tree and use it to visualize your folder structure: tree ~/. Then install htop and run it to see your system processes (press Q to quit). Then install man and read the manual for ls: man ls (press Q to quit)."
+          "content": "These packages are essential for any Termux user. Install them to unlock the full potential of your terminal.\n\nText editors: {{command}}nano{{/command}} and {{command}}vim{{/command}}. File downloading: {{command}}wget{{/command}} and {{command}}curl{{/command}}. Programming: {{command}}python{{/command}} and {{command}}nodejs{{/command}}. Version control: {{command}}git{{/command}}. System access: {{command}}openssh{{/command}}. Utilities: {{command}}tree{{/command}}, {{command}}htop{{/command}}, and {{command}}man{{/command}}.",
+          "example": "{{command}}pkg install tree htop man{{/command}} - Installs multiple packages at once.",
+          "exercise": "Install the tree package and use it to visualize your home folder structure. Install htop and run it to see your system processes. Install the manual pages system and read the manual for a command."
         },
         {
           "title": "Repository Management",
-          "content": "Packages come from repositories. You can change mirrors if downloads are slow or add extra repositories for more software.\n\nTermux has several repositories: main (primary), root (for rooted devices), x11 (graphical applications), and game (games).\n\nUse termux-change-repo to switch to a faster mirror if downloads are slow. Use arrow keys to navigate, Space to select, Enter to confirm.\n\nChanging repositories can significantly improve download speeds depending on your location.",
-          "exercise": "Run termux-change-repo to see the available mirrors. You don't need to change anything, just explore the options. Then check your current repositories with cat $PREFIX/etc/apt/sources.list."
-        }
-      ]
-    },
-    "file-system": {
-      "title": "File System",
-      "icon": "fa-folder-tree",
-      "description": "Understand the Termux file system structure and paths. Knowing where things are and how paths work is essential for effective navigation and file management.",
-      "items": [
-        {
-          "title": "Termux Directory Structure",
-          "content": "Termux has its own isolated file system. Understanding where things are helps you navigate efficiently.\n\nYour home folder (~) is where all your personal files and projects should go. This is the default location when you open Termux.\n\nThe packages folder ($PREFIX) is where installed software lives. You rarely need to touch this.\n\nAfter running termux-setup-storage, you can access your Android storage at ~/storage/shared/.\n\nEach folder serves a specific purpose. Keeping your files organized helps you work more efficiently.",
-          "exercise": "Navigate to each of these folders and use ls to see what's inside: cd ~ (home), cd /data/data/com.termux/files/usr (packages), and cd ~/storage/shared/ (Android storage). Explore your Android storage folders like Downloads and DCIM."
+          "content": "Packages come from repositories. You can change mirrors if downloads are slow or add extra repositories for more software.\n\nTermux has several repositories: main (primary), root (for rooted devices), x11 (graphical applications), and game (games).\n\nUse {{command}}termux-change-repo{{/command}} to switch to a faster mirror if downloads are slow. Use arrow keys to navigate, Space to select, Enter to confirm.",
+          "example": "{{command}}termux-change-repo{{/command}} - Opens mirror selector.\n{{command}}cat $PREFIX/etc/apt/sources.list{{/command}} - Shows current repos.",
+          "exercise": "Run the repository change tool to see the available mirrors. View your current repository list to see where your packages come from."
         },
         {
-          "title": "Absolute vs Relative Paths",
-          "content": "Paths tell the computer where a file is. Understanding the difference is crucial for navigating efficiently.\n\nAn absolute path starts from the root (/) and works no matter where you are. Example: /data/data/com.termux/files/home/practice/mynote.txt\n\nA relative path starts from your current location. Example: practice/mynote.txt (only works if you're in the home folder).\n\nSpecial shortcuts: . (current folder), .. (parent folder), ~ (home folder), - (previous folder).",
-          "exercise": "Practice using absolute and relative paths. Navigate to a folder using both methods: cd /data/data/com.termux/files/home (absolute) and cd ~ (relative with shortcut). Use pwd to verify your location each time."
-        }
-      ]
-    },
-    "storage-access": {
-      "title": "Storage Access",
-      "icon": "fa-database",
-      "description": "Access and manage files on your Android device from Termux. This section covers setting up storage access and working with Android files.",
-      "items": [
-        {
-          "title": "Setting Up Storage Access",
-          "content": "Before you can access your Android files, you need to run termux-setup-storage. This command requests permission to access your phone's storage.\n\nAfter you grant permission, you'll have access to your Android storage through ~/storage/. You'll see folders like shared/, downloads/, dcim/, pictures/, music/, and movies/.\n\nIf storage doesn't work properly, try removing the storage folder and setting it up again with rm -rf ~/storage && termux-setup-storage.\n\nThis setup only needs to be done once unless you reinstall Termux or revoke permissions.",
-          "exercise": "Run termux-setup-storage and grant permission when prompted. Then navigate to your Downloads folder with cd ~/storage/shared/Downloads and list the files with ls. This confirms storage access is working."
-        },
-        {
-          "title": "Accessing Android Folders",
-          "content": "After setup, your Android storage is accessible through ~/storage/. Each folder maps to a different part of your Android storage.\n\n~/storage/shared/ is the root of your internal storage — where you see all your files. The shortcuts like downloads/, dcim/, pictures/, music/, movies/, and documents/ give you quick access to specific folders.\n\nYou can navigate to these folders, list files, copy, move, and delete files just like any other folder in Termux.\n\nThese shortcuts make it easy to work with your Android files without having to remember complex paths.",
-          "exercise": "Navigate to your Downloads folder with cd ~/storage/shared/Downloads and list the files with ls. Copy a file from there to your Termux home folder with cp filename.txt ~/. Then navigate to your DCIM folder with cd ~/storage/shared/DCIM/Camera and list the photos there."
-        },
-        {
-          "title": "Moving Files Between Environments",
-          "content": "Termux private storage and Android shared storage are separate. You need to explicitly copy or move files between them.\n\nTo copy from Termux to Android: cp ~/file.txt ~/storage/shared/Documents/\n\nTo copy from Android to Termux: cp ~/storage/shared/Download/document.pdf ~/\n\nUse -r to copy entire folders (recursive). Use mv instead of cp if you want to move (rather than copy) the file.\n\nUnderstanding how to move files between these environments is essential for sharing work with other apps.",
-          "exercise": "Create a file in Termux with echo 'Hello' > myfile.txt. Copy it to your Android Documents folder with cp myfile.txt ~/storage/shared/Documents/. Verify it appears there with ls ~/storage/shared/Documents/. Then move a file from Android to Termux with mv ~/storage/shared/Download/somefile.pdf ~/."
-        },
-        {
-          "title": "Working with External SD Cards",
-          "content": "If your device has an SD card, you can access it from Termux. The location varies by device.\n\nCommon SD card mount points are /storage/sdcard1/ or /storage/XXXX-XXXX/ (where XXXX is a long alphanumeric string).\n\nYou can create a symlink for easier access: ln -s /storage/sdcard1 ~/sdcard. Then you can just use cd ~/sdcard to access your SD card.\n\nSymlinks make it much easier to work with external storage because you don't have to remember the full path.",
-          "exercise": "Check if you have an SD card mounted by looking in /storage/ with ls /storage/. If you find an SD card folder, create a symlink with ln -s /storage/sdcard1 ~/sdcard (replace sdcard1 with the actual folder name). Then navigate to it with cd ~/sdcard and list its contents with ls."
+          "title": "Working with Different Package Sources",
+          "content": "Not all software is in Termux repositories. Here is how to get software from other sources.\n\nPython packages can be installed with pip. Node.js packages with npm. Ruby gems with gem.\n\nYou can also build software from source when packages aren't available in the repositories.",
+          "example": "{{command}}pip install requests{{/command}} - Installs Python package.\n{{command}}npm install -g nodemon{{/command}} - Installs Node package.",
+          "exercise": "Install a Python package using pip. Then install a Node.js package using npm."
         }
       ]
     },
     "git-github": {
       "title": "Git & GitHub",
       "icon": "fab fa-github",
-      "description": "Learn version control with Git and collaborate on GitHub. Git is essential for any developer, and GitHub is where you'll share your work with the world.",
+      "description": "Learn version control with Git and collaborate on GitHub. Git is essential for any developer, and GitHub is where you'll share your work.",
       "items": [
         {
           "title": "Installing and Configuring Git",
-          "content": "Git tracks changes to files. Think of it as an unlimited undo button for your code and documents.\n\nFirst, install Git with pkg install git. Then configure your identity with git config --global user.name and git config --global user.email. This information is attached to every commit you make.\n\nSet your default editor to nano with git config --global core.editor 'nano' for an easier experience.\n\nGit configuration only needs to be done once. After that, Git will remember your settings for all future projects.",
-          "exercise": "Install Git with pkg install git. Configure your name and email with git config --global user.name 'Your Name' and git config --global user.email 'your@email.com'. Then run git config --list to verify everything is set correctly."
+          "content": "Git tracks changes to files. Think of it as an unlimited undo button for your code and documents.\n\nFirst, install Git with {{command}}pkg install git{{/command}}. Then configure your identity with {{command}}git config --global user.name{{/command}} and {{command}}git config --global user.email{{/command}}. This information is attached to every commit you make.\n\nSet your default editor to nano with {{command}}git config --global core.editor 'nano'{{/command}} for an easier experience.",
+          "example": "{{command}}git config --global user.name 'Jane Doe'{{/command}} - Sets your name.\n{{command}}git config --global user.email 'jane@email.com'{{/command}} - Sets your email.",
+          "exercise": "Install Git. Configure your name and email. Set nano as your default editor. Verify your configuration is correct."
         },
         {
           "title": "Basic Git Workflow",
-          "content": "This is the standard workflow you'll use 90% of the time with Git. Master this and you master version control.\n\nStart with git init to create a repository. Make changes to your files, then use git status to see what changed. Stage changes with git add, then commit them with a message describing what you did.\n\nUse git log to see the history of your commits. Connect to a remote repository with git remote add and push your changes with git push.\n\nThis workflow becomes second nature with practice. It's the foundation of all Git usage.",
-          "exercise": "Create a project folder with mkdir myproject && cd myproject. Initialize Git with git init. Create a file with echo 'Hello Git' > readme.txt. Stage it with git add readme.txt. Commit it with git commit -m 'Initial commit'. View the history with git log --oneline."
+          "content": "This is the standard workflow you'll use 90% of the time with Git. Master this and you master version control.\n\nStart with {{command}}git init{{/command}} to create a repository. Make changes to your files, then use {{command}}git status{{/command}} to see what changed. Stage changes with {{command}}git add{{/command}}, then commit them with a message describing what you did.\n\nUse {{command}}git log{{/command}} to see the history of your commits. Connect to a remote repository with {{command}}git remote add{{/command}} and push your changes with {{command}}git push{{/command}}.",
+          "example": "{{command}}git init{{/command}} - Creates a repository.\n{{command}}git add file.txt{{/command}} - Stages a file.\n{{command}}git commit -m 'Message'{{/command}} - Commits with message.",
+          "exercise": "Create a new project folder and initialize Git. Create a file and add content to it. Stage the file. Commit it with a message. View your commit history."
         },
         {
           "title": "Understanding Branches",
-          "content": "Branches let you work on different features separately. The main branch (often called main or master) is the stable version.\n\nCreate a new branch with git branch feature-name and switch to it with git checkout feature-name. Or do both at once with git checkout -b feature-name.\n\nWhen your feature is ready, merge it back to main with git merge feature-name. Delete the branch with git branch -d feature-name when you're done.\n\nBranches are one of Git's most powerful features, allowing multiple people to work on the same project without conflicts.",
-          "exercise": "Create a new branch with git checkout -b feature-test. Make a change to your file. Switch back to main with git checkout main. Merge your changes with git merge feature-test. Delete the branch with git branch -d feature-test."
+          "content": "Branches let you work on different features separately. The main branch (often called main or master) is the stable version.\n\nCreate a new branch with {{command}}git branch feature-name{{/command}} and switch to it with {{command}}git checkout feature-name{{/command}}. Or do both at once with {{command}}git checkout -b feature-name{{/command}}.\n\nWhen your feature is ready, merge it back to main with {{command}}git merge feature-name{{/command}}. Delete the branch with {{command}}git branch -d feature-name{{/command}} when you're done.",
+          "example": "{{command}}git checkout -b new-feature{{/command}} - Creates and switches branch.\n{{command}}git merge new-feature{{/command}} - Merges branch into current.",
+          "exercise": "Create a new branch and switch to it. Make a change to your file. Switch back to main. Merge your changes from the branch. Delete the branch."
         },
         {
           "title": "Working with GitHub",
-          "content": "Clone repositories to get code from GitHub and contribute to open source projects.\n\nTo clone a repository, use git clone https://github.com/user/repository.git. This downloads the entire repository to your device.\n\nFor SSH access, generate an SSH key with ssh-keygen -t ed25519, then add the public key to your GitHub account. This allows passwordless pushes and pulls.\n\nWorking with GitHub opens up a world of collaboration and access to open source projects.",
-          "exercise": "Generate an SSH key with ssh-keygen -t ed25519 -C 'your@email.com'. View the public key with cat ~/.ssh/id_ed25519.pub. Add this key to your GitHub account under Settings > SSH and GPG keys. Then clone a public repository with git clone https://github.com/user/repo.git."
+          "content": "Clone repositories to get code from GitHub and contribute to open source projects.\n\nTo clone a repository, use {{command}}git clone https://github.com/user/repository.git{{/command}}. This downloads the entire repository to your device.\n\nFor SSH access, generate an SSH key with {{command}}ssh-keygen -t ed25519{{/command}}, then add the public key to your GitHub account. This allows passwordless pushes and pulls.",
+          "example": "{{command}}git clone https://github.com/octocat/Hello-World.git{{/command}} - Clones repository.\n{{command}}ssh-keygen -t ed25519{{/command}} - Generates SSH key.",
+          "exercise": "Generate an SSH key pair. View your public key. Add it to your GitHub account under SSH keys. Clone a public repository from GitHub."
         },
         {
           "title": "Undoing Changes",
-          "content": "Fix mistakes and revert changes in Git. There are several ways to undo depending on what you need.\n\nTo unstage a file (remove from staging but keep changes): git reset HEAD file.txt\n\nTo discard changes to a file (revert to last commit): git checkout -- file.txt\n\nTo undo the last commit (keep changes): git reset --soft HEAD~1\n\nTo undo the last commit (discard changes): git reset --hard HEAD~1\n\nUnderstanding these undo commands gives you confidence to experiment and fix mistakes.",
-          "exercise": "Make some commits, then practice undoing changes: unstage a file with git reset HEAD filename, discard changes with git checkout -- filename, and undo the last commit with git reset --soft HEAD~1. Each one works differently."
+          "content": "Fix mistakes and revert changes in Git. There are several ways to undo depending on what you need.\n\nTo unstage a file: {{command}}git reset HEAD file.txt{{/command}}. To discard changes to a file: {{command}}git checkout -- file.txt{{/command}}.\n\nTo undo the last commit keeping changes: {{command}}git reset --soft HEAD~1{{/command}}. To undo the last commit discarding changes: {{command}}git reset --hard HEAD~1{{/command}}.",
+          "example": "{{command}}git reset HEAD file.txt{{/command}} - Unstages file.\n{{command}}git checkout -- file.txt{{/command}} - Discards changes.",
+          "exercise": "Make some commits, then practice undoing changes using the different methods: unstage a file, discard changes to a file, and undo the last commit."
         }
       ]
     },
@@ -279,45 +337,58 @@
       "items": [
         {
           "title": "SSH Client",
-          "content": "SSH (Secure Shell) lets you securely connect to and control other computers. It's the standard for remote server access.\n\nTo connect, use ssh username@hostname_or_ip. For example, ssh user@192.168.1.100 connects to a computer on your local network.\n\nUse -p to specify a different port (default is 22). Use -i to specify a private key file.\n\nSSH is encrypted and secure, making it safe to use over the internet.",
-          "exercise": "If you have another computer on your network, try connecting to it via SSH. For example: ssh user@192.168.1.100. If you don't have another computer, research how to set up a local SSH server for practice. Once connected, try running commands like ls or pwd."
+          "content": "SSH (Secure Shell) lets you securely connect to and control other computers. It's the standard for remote server access.\n\nTo connect, use {{command}}ssh username@hostname_or_ip{{/command}}. For example, {{command}}ssh user@192.168.1.100{{/command}} connects to a computer on your local network.\n\nUse {{command}}-p{{/command}} to specify a different port (default is 22). Use {{command}}-i{{/command}} to specify a private key file.",
+          "example": "{{command}}ssh user@192.168.1.100{{/command}} - Connects to remote computer.\n{{command}}ssh -p 2222 user@server.com{{/command}} - Connects on custom port.",
+          "exercise": "If you have another computer on your network, try connecting to it via SSH. If you don't, research how to set up a local SSH server for practice. Once connected, run a few commands on the remote machine."
         },
         {
           "title": "SSH Server (Access Your Phone)",
-          "content": "Turn your phone into an SSH server and access it from your computer or another device.\n\nStart the server with sshd. It runs on port 8022 (not 22, because Android restricts low ports).\n\nFind your phone's IP address with ifconfig or ip addr show | grep inet. Then connect from your computer with ssh -p 8022 username@phone_ip.\n\nYou can make SSH start automatically by adding sshd to your .zshrc or .bashrc file.\n\nRunning an SSH server on your phone lets you access your files remotely and manage your device from any computer.",
-          "exercise": "Start the SSH server on your phone with sshd. Find your phone's IP with ifconfig. Then from your computer, connect with ssh -p 8022 username@phone_ip (replace username and phone_ip with your actual username and IP). Once connected, try running commands on your phone from your computer."
+          "content": "Turn your phone into an SSH server and access it from your computer or another device.\n\nStart the server with {{command}}sshd{{/command}}. It runs on port 8022 (not 22, because Android restricts low ports).\n\nFind your phone's IP address with {{command}}ifconfig{{/command}} or {{command}}ip addr show | grep inet{{/command}}. Then connect from your computer with {{command}}ssh -p 8022 username@phone_ip{{/command}}.",
+          "example": "{{command}}sshd{{/command}} - Starts SSH server.\n{{command}}ssh -p 8022 user@192.168.1.105{{/command}} - Connects to phone.",
+          "exercise": "Start the SSH server on your phone. Find your phone's IP address. From your computer, connect to your phone using SSH. Run commands on your phone from your computer."
         },
         {
           "title": "File Transfer with SCP and Rsync",
-          "content": "SCP and Rsync use SSH to transfer files securely. SCP is simple and works like cp. Rsync is more efficient for large transfers.\n\nSCP syntax: scp -P 8022 username@phone_ip:~/file.txt ./ copies from phone to computer.\n\nRsync is better for syncing folders: rsync -avz -e 'ssh -p 8022' username@phone_ip:~/documents/ ./backup/\n\nSCP is good for single files, while Rsync is better for folders and large transfers because it only copies changed files.",
-          "exercise": "Copy a file from your phone to your computer using SCP: scp -P 8022 username@phone_ip:~/file.txt ./. Then copy it back: scp localfile.txt username@phone_ip:~/. Then install rsync with pkg install rsync and sync a folder: rsync -avz -e 'ssh -p 8022' username@phone_ip:~/documents/ ./backup/"
+          "content": "SCP and Rsync use SSH to transfer files securely. SCP is simple and works like cp. Rsync is more efficient for large transfers.\n\nSCP syntax: {{command}}scp -P 8022 username@phone_ip:~/file.txt ./{{/command}} copies from phone to computer.\n\nRsync is better for syncing folders: {{command}}rsync -avz -e 'ssh -p 8022' username@phone_ip:~/documents/ ./backup/{{/command}}",
+          "example": "{{command}}scp -P 8022 user@192.168.1.105:~/notes.txt ./{{/command}} - Copies from phone.\n{{command}}rsync -avz -e 'ssh -p 8022' user@phone:~/docs/ ./backup/{{/command}} - Syncs folder.",
+          "exercise": "Copy a file from your phone to your computer using SCP. Then copy it back. Then install rsync and sync a folder between your phone and computer."
         },
         {
           "title": "Network Tools",
-          "content": "Useful commands for testing connectivity and network diagnostics.\n\nping tests connectivity: ping google.com or ping -c 4 8.8.8.8.\n\nwget and curl download files from the web. wget is simpler for downloads; curl is more flexible for APIs.\n\nnmap scans for open ports. traceroute traces network paths. dig and nslookup perform DNS lookups.\n\nThese tools are essential for troubleshooting network issues and understanding how networks work.",
-          "exercise": "Use ping to test connectivity to google.com: ping -c 4 google.com. Use curl to check your public IP: curl ifconfig.me. Use wget to download a small file: wget https://example.com/smallfile.txt. Try traceroute to see the path to google.com: traceroute google.com."
+          "content": "Useful commands for testing connectivity and network diagnostics.\n\n{{command}}ping{{/command}} tests connectivity. {{command}}wget{{/command}} and {{command}}curl{{/command}} download files. {{command}}nmap{{/command}} scans ports. {{command}}traceroute{{/command}} traces network paths. {{command}}dig{{/command}} and {{command}}nslookup{{/command}} perform DNS lookups.",
+          "example": "{{command}}ping -c 4 google.com{{/command}} - Tests connectivity.\n{{command}}curl ifconfig.me{{/command}} - Shows public IP.",
+          "exercise": "Test connectivity to a website. Download a small file from the internet. Check your public IP address. Trace the network path to google.com."
         }
       ]
     },
     "python-dev": {
       "title": "Python Development",
       "icon": "fab fa-python",
-      "description": "Write and run Python code on your Android device. Python is one of the most popular languages for beginners and professionals alike.",
+      "description": "Write and run Python code on your Android device. Python is one of the most popular languages for beginners and professionals.",
       "items": [
         {
           "title": "Installing Python",
-          "content": "Python is a beginner-friendly programming language that's perfect for scripting and automation on Termux.\n\nInstall Python with pkg install python. Verify the installation with python --version.\n\nPip is Python's package manager. Upgrade it with pip install --upgrade pip.\n\nYou can run Python interactively with python (the REPL), or run a script with python my_script.py.\n\nPython's simple syntax makes it ideal for learning programming and automating tasks.",
-          "exercise": "Install Python with pkg install python. Verify it with python --version. Start the interactive interpreter with python, print 'Hello World' with print('Hello World'), and exit with exit(). Then create a file with echo \"print('Hello from file')\" > hello.py and run it with python hello.py."
+          "content": "Python is a beginner-friendly programming language that's perfect for scripting and automation on Termux.\n\nInstall Python with {{command}}pkg install python{{/command}}. Verify the installation with {{command}}python --version{{/command}}.\n\nPip is Python's package manager. Upgrade it with {{command}}pip install --upgrade pip{{/command}}.\n\nYou can run Python interactively with {{command}}python{{/command}} (the REPL), or run a script with {{command}}python my_script.py{{/command}}.",
+          "example": "{{command}}python --version{{/command}} - Shows Python version.\n{{command}}python{{/command}} - Starts interactive interpreter.",
+          "exercise": "Install Python. Verify it's installed correctly. Start the Python interpreter and print 'Hello World'. Exit the interpreter. Create a Python script file and run it."
         },
         {
           "title": "Installing Python Packages",
-          "content": "Python has thousands of packages for everything from web development to data science. Use pip to install them.\n\nInstall a package with pip install package_name. You can install multiple packages at once.\n\nList installed packages with pip list. Show details with pip show package_name.\n\nSave your dependencies to a file with pip freeze > requirements.txt and install from that file with pip install -r requirements.txt.\n\nPython packages extend what you can do with Python, from web scraping to machine learning.",
-          "exercise": "Install the requests package with pip install requests. Then create a Python script with nano download.py that uses requests to download a webpage. Save it, run it with python download.py, and check the output. Then use pip freeze > requirements.txt to save your dependencies."
+          "content": "Python has thousands of packages for everything from web development to data science. Use pip to install them.\n\nInstall a package with {{command}}pip install package_name{{/command}}. You can install multiple packages at once.\n\nList installed packages with {{command}}pip list{{/command}}. Show details with {{command}}pip show package_name{{/command}}.\n\nSave your dependencies to a file with {{command}}pip freeze > requirements.txt{{/command}} and install from that file with {{command}}pip install -r requirements.txt{{/command}}.",
+          "example": "{{command}}pip install requests{{/command}} - Installs requests.\n{{command}}pip freeze > requirements.txt{{/command}} - Saves dependencies.",
+          "exercise": "Install the requests package. Create a Python script that downloads a webpage. Save your installed packages to a requirements file."
         },
         {
           "title": "Creating a Simple Web Server",
-          "content": "Start a web server in one line of Python. This is great for sharing files or testing web development.\n\nUse Python's built-in HTTP server: python -m http.server 8000. This serves the current directory on port 8000.\n\nYou can specify a different directory: python -m http.server 8000 --directory /sdcard/Download.\n\nFor more flexibility, use Flask: install it with pip install flask, then create a simple app.\n\nWeb servers built with Python are great for testing and sharing files on your local network.",
-          "exercise": "Start a simple HTTP server with python -m http.server 8000. Open your browser and go to http://localhost:8000 to see your files. Press Ctrl+C to stop the server. Then try serving a specific directory with python -m http.server 8000 --directory /sdcard/Download."
+          "content": "Start a web server in one line of Python. This is great for sharing files or testing web development.\n\nUse Python's built-in HTTP server: {{command}}python -m http.server 8000{{/command}}. This serves the current directory on port 8000.\n\nYou can specify a different directory: {{command}}python -m http.server 8000 --directory /sdcard/Download{{/command}}.\n\nFor more flexibility, use Flask: install it with {{command}}pip install flask{{/command}}, then create a simple app.",
+          "example": "{{command}}python -m http.server 8000{{/command}} - Starts web server.\n{{command}}python -m http.server 8000 --directory /sdcard/Download{{/command}} - Serves Downloads folder.",
+          "exercise": "Start a web server serving your current folder. Open your browser to see your files. Stop the server. Start a server serving your Downloads folder instead."
+        },
+        {
+          "title": "Working with APIs",
+          "content": "Fetch data from internet APIs using Python. This is how you interact with web services programmatically.\n\nInstall the requests library: {{command}}pip install requests{{/command}}. Then use it in your Python scripts to make HTTP requests.\n\nAPIs return data in JSON format which you can parse and use in your applications.",
+          "example": "{{command}}import requests; requests.get('https://api.example.com/data'){{/command}} - Fetches API data.",
+          "exercise": "Install the requests library. Write a Python script that fetches data from a public API and prints the response."
         }
       ]
     },
@@ -328,18 +399,21 @@
       "items": [
         {
           "title": "Installing Node.js",
-          "content": "Node.js lets you run JavaScript outside of a browser. It's essential for modern web development and JavaScript tooling.\n\nInstall Node.js with pkg install nodejs. Verify with node --version and npm --version.\n\nNPM is Node's package manager. You can run Node interactively with node (the REPL), or run a script with node app.js.\n\nNode.js opens up JavaScript development on your phone, from web servers to command-line tools.",
-          "exercise": "Install Node.js with pkg install nodejs. Verify it with node --version and npm --version. Start the REPL with node, type console.log('Hello'), and press Enter. Then exit with .exit. Create a file with echo \"console.log('Hello from file')\" > hello.js and run it with node hello.js."
+          "content": "Node.js lets you run JavaScript outside of a browser. It's essential for modern web development and JavaScript tooling.\n\nInstall Node.js with {{command}}pkg install nodejs{{/command}}. Verify with {{command}}node --version{{/command}} and {{command}}npm --version{{/command}}.\n\nNPM is Node's package manager. You can run Node interactively with {{command}}node{{/command}} (the REPL), or run a script with {{command}}node app.js{{/command}}.",
+          "example": "{{command}}node --version{{/command}} - Shows Node version.\n{{command}}node{{/command}} - Starts REPL.",
+          "exercise": "Install Node.js. Verify it's installed correctly. Start the REPL and run a simple JavaScript command. Create a script file and run it."
         },
         {
           "title": "Creating a Web Server with Express",
-          "content": "Express is the most popular Node.js web framework. It makes building web servers simple and fast.\n\nCreate a new project folder and initialize npm with npm init -y. Install Express with npm install express.\n\nCreate a server.js file with a basic Express server. Run it with node server.js or use nodemon for auto-restart.\n\nExpress is used by thousands of websites and is the foundation of many JavaScript web applications.",
-          "exercise": "Create a project folder with mkdir myapp && cd myapp. Initialize npm with npm init -y. Install Express with npm install express. Create a server file that responds with 'Hello World'. Run it with node server.js and test it in your browser."
+          "content": "Express is the most popular Node.js web framework. It makes building web servers simple and fast.\n\nCreate a new project folder and initialize npm with {{command}}npm init -y{{/command}}. Install Express with {{command}}npm install express{{/command}}.\n\nCreate a server.js file with a basic Express server. Run it with {{command}}node server.js{{/command}} or use nodemon for auto-restart.",
+          "example": "{{command}}npm init -y{{/command}} - Initializes project.\n{{command}}npm install express{{/command}} - Installs Express.",
+          "exercise": "Create a project folder and initialize npm. Install Express. Create a server file that responds with 'Hello World'. Run it and test it in your browser."
         },
         {
           "title": "Useful npm Packages",
-          "content": "Install global tools and local packages for development. Global packages are installed with -g and are available everywhere.\n\nUseful global packages: nodemon (auto-restart server), pm2 (process manager), npm-check (check outdated packages), http-server (simple HTTP server).\n\nLocal packages: axios (HTTP client), chalk (colored terminal output), dotenv (environment variables), commander (command line interfaces).\n\nThe npm ecosystem has packages for almost every need, making JavaScript development incredibly productive.",
-          "exercise": "Install http-server globally with npm install -g http-server and use it to serve a directory with http-server. Install chalk locally in a project with npm install chalk and use it in a script to print colored output: console.log(chalk.blue('Hello'))."
+          "content": "Install global tools and local packages for development. Global packages are installed with {{command}}-g{{/command}} and are available everywhere.\n\nUseful global packages: {{command}}nodemon{{/command}} (auto-restart server), {{command}}pm2{{/command}} (process manager), {{command}}http-server{{/command}} (simple HTTP server).\n\nLocal packages: {{command}}axios{{/command}} (HTTP client), {{command}}chalk{{/command}} (colored output), {{command}}dotenv{{/command}} (environment variables).",
+          "example": "{{command}}npm install -g http-server{{/command}} - Installs globally.\n{{command}}npm install chalk{{/command}} - Installs locally.",
+          "exercise": "Install http-server globally and use it to serve a directory. Install chalk locally and use it in a script to print colored output."
         }
       ]
     },
@@ -350,18 +424,27 @@
       "items": [
         {
           "title": "Zsh and Oh My Zsh",
-          "content": "Upgrade from Bash to Zsh with themes and plugins. Zsh offers better auto-completion, theming, and plugins.\n\nInstall Zsh with pkg install zsh, then change your default shell with chsh -s zsh. Restart Termux for the change to take effect.\n\nInstall Oh My Zsh for easy theming: sh -c \"$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)\". Change your theme by editing ~/.zshrc.\n\nZsh makes the terminal more user-friendly with features like better tab completion and beautiful prompts.",
-          "exercise": "Install Zsh with pkg install zsh. Change your default shell with chsh -s zsh. Restart Termux. Then install Oh My Zsh with sh -c \"$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)\". Change your theme by editing ~/.zshrc and setting ZSH_THEME='agnoster'. Apply changes with source ~/.zshrc."
+          "content": "Upgrade from Bash to Zsh with themes and plugins. Zsh offers better auto-completion, theming, and plugins.\n\nInstall Zsh with {{command}}pkg install zsh{{/command}}, then change your default shell with {{command}}chsh -s zsh{{/command}}. Restart Termux for the change to take effect.\n\nInstall Oh My Zsh for easy theming: {{command}}sh -c \"$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)\"{{/command}}. Change your theme by editing ~/.zshrc.",
+          "example": "{{command}}chsh -s zsh{{/command}} - Changes default shell.\n{{command}}source ~/.zshrc{{/command}} - Reloads config.",
+          "exercise": "Install Zsh. Change your default shell to Zsh. Restart Termux. Install Oh My Zsh. Change your theme to something you like. Apply the changes."
         },
         {
           "title": "Color Schemes",
-          "content": "Customize terminal colors by editing colors.properties. You can create your own theme or use a pre-made one.\n\nCreate the .termux directory if it doesn't exist: mkdir -p ~/.termux.\n\nEdit colors.properties with nano ~/.termux/colors.properties. Add your color settings like background, foreground, cursor, and palette colors.\n\nRestart Termux to apply your new color scheme.\n\nColor schemes make the terminal more readable and can reduce eye strain.",
-          "exercise": "Create a custom color scheme for your Termux. Create the directory with mkdir -p ~/.termux. Open colors.properties with nano ~/.termux/colors.properties. Add: background=black, foreground=white, cursor=purple. Save and restart Termux to see your changes."
+          "content": "Customize terminal colors by editing colors.properties. You can create your own theme or use a pre-made one.\n\nCreate the .termux directory if it doesn't exist: {{command}}mkdir -p ~/.termux{{/command}}.\n\nEdit colors.properties with {{command}}nano ~/.termux/colors.properties{{/command}}. Add your color settings like background, foreground, cursor, and palette colors.\n\nRestart Termux to apply your new color scheme.",
+          "example": "{{command}}mkdir -p ~/.termux{{/command}} - Creates directory.\n{{command}}nano ~/.termux/colors.properties{{/command}} - Opens color file.",
+          "exercise": "Create the .termux directory if needed. Open the colors file and add a custom color scheme. Save and restart Termux to see your new colors."
+        },
+        {
+          "title": "Font Size and Style",
+          "content": "Adjust font size on the fly and change the font family.\n\nVolume Up button increases font size. Volume Down button decreases font size.\n\nTo change the font family, edit termux.properties and add a font path.",
+          "example": "{{command}}nano ~/.termux/termux.properties{{/command}} - Opens settings file.\n{{command}}font = /path/to/font.ttf{{/command}} - Changes font.",
+          "exercise": "Use the volume keys to change font size. Then change the font family in termux.properties."
         },
         {
           "title": "Custom Aliases",
-          "content": "Create shortcuts for frequently used commands. Aliases save time and reduce typos.\n\nEdit your shell configuration file (~/.zshrc for Zsh, ~/.bashrc for Bash). Add alias definitions like alias ll='ls -la'.\n\nAfter adding aliases, reload your config with source ~/.zshrc (or source ~/.bashrc).\n\nCommon aliases: ll for ls -la, update for pkg update && pkg upgrade, home for cd ~.\n\nAliases can dramatically speed up your workflow by reducing keystrokes.",
-          "exercise": "Add some useful aliases to your shell config: alias ll='ls -la', alias update='pkg update && pkg upgrade', alias home='cd ~'. Add them to ~/.zshrc or ~/.bashrc. Reload your config with source ~/.zshrc (or source ~/.bashrc). Test your new aliases: ll, update, home."
+          "content": "Create shortcuts for frequently used commands. Aliases save time and reduce typos.\n\nEdit your shell configuration file (~/.zshrc for Zsh, ~/.bashrc for Bash). Add alias definitions like {{command}}alias ll='ls -la'{{/command}}.\n\nAfter adding aliases, reload your config with {{command}}source ~/.zshrc{{/command}} (or source ~/.bashrc).",
+          "example": "{{command}}alias ll='ls -la'{{/command}} - Creates alias.\n{{command}}source ~/.zshrc{{/command}} - Reloads config.",
+          "exercise": "Add aliases for ls -la, for updating packages, and for going to your home folder. Reload your configuration. Test each alias to make sure it works."
         }
       ]
     },
@@ -372,18 +455,27 @@
       "items": [
         {
           "title": "Essential Terminal Shortcuts",
-          "content": "These shortcuts work in almost every terminal environment. Learn them to navigate and edit faster.\n\nCtrl+C stops the current process. Ctrl+D exits the current shell. Ctrl+L clears the screen.\n\nCtrl+A jumps to the beginning of the line, Ctrl+E jumps to the end. Ctrl+U deletes to the beginning, Ctrl+K deletes to the end.\n\nUp/Down arrows navigate command history. Tab auto-completes commands and filenames.\n\nThese shortcuts work across all terminal environments, so learning them is a valuable skill.",
-          "exercise": "Practice using each shortcut. Type a long command like echo 'this is a long command to practice editing'. Use Ctrl+A to go to the beginning, Ctrl+E to go to the end, Ctrl+U to delete to the beginning, and Ctrl+K to delete to the end. Then use Up arrow to recall the command and edit it again."
+          "content": "These shortcuts work in almost every terminal environment. Learn them to navigate and edit faster.\n\nCtrl+C stops the current process. Ctrl+D exits the current shell. Ctrl+L clears the screen.\n\nCtrl+A jumps to the beginning of the line, Ctrl+E jumps to the end. Ctrl+U deletes to the beginning, Ctrl+K deletes to the end.\n\nUp/Down arrows navigate command history. Tab auto-completes commands and filenames.",
+          "example": "Ctrl+C - Stops process.\nCtrl+L - Clears screen.\nCtrl+A - Goes to start of line.",
+          "exercise": "Type a long command. Use the shortcuts to jump to the beginning and end of the line. Delete to the beginning and to the end. Use the up arrow to recall previous commands."
         },
         {
           "title": "Termux-Specific Shortcuts",
-          "content": "Termux uses volume keys because Android keyboards lack certain keys like Ctrl, Alt, and Escape.\n\nVolume Up + Q = Ctrl key. Volume Up + W = Tilde (~). Volume Up + E = Pipe (|). Volume Up + R = Backslash (\\).\n\nVolume Down + D = Escape key. Volume Down + L = Tab key. Volume Down + K = Delete key.\n\nYou can also add a permanent extra keys row with 'extra-keys' in termux.properties.\n\nThese shortcuts make it possible to access essential keys that aren't on your Android keyboard.",
-          "exercise": "Try the volume key shortcuts: press Volume Up + Q to send Ctrl, Volume Up + E to type |, Volume Up + W to type ~. Then add an extra keys row with echo 'extra-keys = [[\"ESC\",\"CTRL\",\"ALT\",\"LEFT\",\"RIGHT\",\"UP\",\"DOWN\"]]' > ~/.termux/termux.properties and reload with termux-reload-settings."
+          "content": "Termux uses volume keys because Android keyboards lack certain keys like Ctrl, Alt, and Escape.\n\nVolume Up + Q = Ctrl key. Volume Up + W = Tilde (~). Volume Up + E = Pipe (|). Volume Up + R = Backslash (\\)\n\nVolume Down + D = Escape key. Volume Down + L = Tab key. Volume Down + K = Delete key.\n\nYou can also add a permanent extra keys row with 'extra-keys' in termux.properties.",
+          "example": "Volume Up + Q - Sends Ctrl.\nVolume Up + E - Types |.\nVolume Down + D - Sends Escape.",
+          "exercise": "Try the Volume Up shortcuts for Ctrl, pipe, and tilde. Then add an extra keys row with ESC, CTRL, ALT, and arrow keys. Reload Termux settings."
         },
         {
           "title": "Nano Text Editor Shortcuts",
-          "content": "^ means Ctrl (so ^O means press Ctrl and O together). These shortcuts make editing in Nano fast and efficient.\n\n^O saves the file (Write Out). ^X exits Nano. ^K cuts the current line. ^U pastes (Uncut) the cut line.\n\n^W searches for text. ^\\ searches and replaces. ^G shows help. ^C shows cursor position.\n\nAlt+U undoes, Alt+E redoes. Alt+A selects text, Alt+6 copies the selected text.\n\nNano shortcuts are displayed at the bottom of the screen, making them easy to learn.",
-          "exercise": "Open a file in Nano with nano test.txt. Practice saving with ^O, searching with ^W, cutting with ^K, and pasting with ^U. Then enable line numbers by creating ~/.nanorc with echo 'set linenumbers' >> ~/.nanorc. Open Nano again to see line numbers."
+          "content": "^ means Ctrl (so ^O means press Ctrl and O together). These shortcuts make editing in Nano fast and efficient.\n\n^O saves the file (Write Out). ^X exits Nano. ^K cuts the current line. ^U pastes (Uncut) the cut line.\n\n^W searches for text. ^\\ searches and replaces. ^G shows help. ^C shows cursor position.\n\nAlt+U undoes, Alt+E redoes. Alt+A selects text, Alt+6 copies the selected text.",
+          "example": "^O - Saves file.\n^X - Exits Nano.\n^K - Cuts line.\n^U - Pastes line.",
+          "exercise": "Open a file in Nano. Practice saving, searching, cutting, and pasting. Enable line numbers in your Nano configuration."
+        },
+        {
+          "title": "Vim Text Editor Shortcuts",
+          "content": "Vim is a powerful text editor with a steeper learning curve. Here are the basics to get you started.\n\nModes: i (Insert mode), Esc (Normal mode), v (Visual mode).\n\nIn Normal mode: :w saves, :q quits, :wq saves and quits, :q! quits without saving.\n\nMovement: h (left), j (down), k (up), l (right). 0 (start of line), $ (end of line), gg (start of file), G (end of file).\n\nEditing: x (delete character), dd (delete line), yy (copy line), p (paste below).",
+          "example": ":w - Saves file.\n:q - Quits.\ni - Enters Insert mode.\nEsc - Returns to Normal mode.",
+          "exercise": "Install vim with pkg install vim. Open a file, practice entering Insert mode, saving, and exiting. Try moving around with h, j, k, l."
         }
       ]
     },
@@ -394,23 +486,33 @@
       "items": [
         {
           "title": "Repository Errors",
-          "content": "If pkg update fails, try these solutions.\n\nFirst, change the repository mirror with termux-change-repo and select a different mirror.\n\nIf that doesn't work, clear the cache with pkg clean and try again. You can also reset repositories by removing the lists folder.\n\nCheck your internet connection with ping google.com and verify your date/time settings are correct.\n\nRepository errors are usually caused by network issues or outdated mirrors.",
-          "exercise": "Try changing your repository mirror using termux-change-repo to see the available options. Select a different mirror and see if pkg update works better. If not, clear the cache with pkg clean and try again."
+          "content": "If {{command}}pkg update{{/command}} fails, try these solutions.\n\nFirst, change the repository mirror with {{command}}termux-change-repo{{/command}} and select a different mirror.\n\nIf that doesn't work, clear the cache with {{command}}pkg clean{{/command}} and try again. You can also reset repositories by removing the lists folder.\n\nCheck your internet connection with {{command}}ping google.com{{/command}} and verify your date/time settings are correct.",
+          "example": "{{command}}termux-change-repo{{/command}} - Changes mirror.\n{{command}}pkg clean{{/command}} - Clears cache.",
+          "exercise": "Run the repository change tool and explore the available mirrors. Clear the package cache. Test your internet connection with ping."
         },
         {
           "title": "Storage Permission Issues",
-          "content": "If you cannot access Android files, fix storage permissions.\n\nRe-run termux-setup-storage to request permission again. Check Android Settings to ensure Termux has Storage permission.\n\nOn Android 11+, you may need to enable 'Allow management of all files' in the permissions settings.\n\nYou can also manually recreate the symlinks by removing ~/storage and running termux-setup-storage again.\n\nStorage issues are often caused by permission changes or Android updates.",
-          "exercise": "Check your storage permissions in Android Settings > Apps > Termux > Permissions. Make sure Storage is allowed. Then run termux-setup-storage again. If it still doesn't work, try rm -rf ~/storage && termux-setup-storage."
+          "content": "If you cannot access Android files, fix storage permissions.\n\nRe-run {{command}}termux-setup-storage{{/command}} to request permission again. Check Android Settings to ensure Termux has Storage permission.\n\nOn Android 11+, you may need to enable 'Allow management of all files' in the permissions settings.\n\nYou can also manually recreate the symlinks by removing ~/storage and running {{command}}termux-setup-storage{{/command}} again.",
+          "example": "{{command}}termux-setup-storage{{/command}} - Requests storage permission.\n{{command}}rm -rf ~/storage && termux-setup-storage{{/command}} - Recreates symlinks.",
+          "exercise": "Check your storage permissions in Android Settings. Run the storage setup command again. If it doesn't work, remove the storage folder and run setup again."
         },
         {
           "title": "Package Installation Failures",
-          "content": "When pkg install fails, use these fixes.\n\nFirst, update everything with pkg update && pkg upgrade. Then clear the cache with pkg clean.\n\nCheck your disk space with df -h — you might need to free up space. Try reinstalling the package with pkg reinstall <package>.\n\nIf dependencies are broken, run pkg install -f to fix them. Also verify that the package exists with pkg search <package-name>.\n\nMost installation failures are due to network issues, disk space, or dependency problems.",
-          "exercise": "Check your disk space with df -h. If you're low on space, clean the cache with pkg clean. Then try installing a package with pkg install <package>. If it fails, try pkg reinstall <package> or pkg install -f to fix dependencies."
+          "content": "When {{command}}pkg install{{/command}} fails, use these fixes.\n\nFirst, update everything with {{command}}pkg update && pkg upgrade{{/command}}. Then clear the cache with {{command}}pkg clean{{/command}}.\n\nCheck your disk space with {{command}}df -h{{/command}} — you might need to free up space. Try reinstalling the package with {{command}}pkg reinstall <package>{{/command}}.\n\nIf dependencies are broken, run {{command}}pkg install -f{{/command}} to fix them. Also verify that the package exists with {{command}}pkg search <package-name>{{/command}}.",
+          "example": "{{command}}pkg update && pkg upgrade{{/command}} - Updates everything.\n{{command}}pkg install -f{{/command}} - Fixes dependencies.",
+          "exercise": "Check your available disk space. Clean the package cache. Try installing a package. If it fails, try fixing dependencies."
+        },
+        {
+          "title": "Termux Won't Start or Keeps Crashing",
+          "content": "If Termux crashes on launch, try these solutions.\n\nFirst, clear the cache in Android Settings. If that doesn't work, clear all data (this will delete everything in Termux).\n\nYou can also reinstall Termux from F-Droid. Backup your files first.\n\nDisable battery optimization for Termux and make sure you're using the F-Droid version.",
+          "example": "Settings > Apps > Termux > Storage > Clear Cache - Clears cache.\nSettings > Apps > Termux > Storage > Clear Data - Clears all data.",
+          "exercise": "If Termux is crashing, clear the cache first. If that doesn't work, backup your files and clear data or reinstall."
         },
         {
           "title": "SSH Connection Issues",
-          "content": "Fix problems when connecting via SSH.\n\nFirst, check if sshd is running with ps aux | grep sshd. If not, start it with sshd.\n\nVerify you're using the correct port (8022) and the correct IP address. Both devices must be on the same network.\n\nCheck permissions on ~/.ssh (should be 700) and ~/.ssh/authorized_keys (should be 600).\n\nRegenerate SSH keys if needed and check the SSH logs with logcat -s Termux:SSH.\n\nSSH issues are usually caused by network configuration or permission problems.",
-          "exercise": "Start sshd with sshd. Check if it's running with ps aux | grep sshd. Find your IP with ifconfig. Check SSH permissions with ls -la ~/.ssh. If permissions are wrong, fix them with chmod 700 ~/.ssh && chmod 600 ~/.ssh/authorized_keys. Then try connecting from another device."
+          "content": "Fix problems when connecting via SSH.\n\nFirst, check if {{command}}sshd{{/command}} is running with {{command}}ps aux | grep sshd{{/command}}. If not, start it with {{command}}sshd{{/command}}.\n\nVerify you're using the correct port (8022) and the correct IP address. Both devices must be on the same network.\n\nCheck permissions on ~/.ssh (should be 700) and ~/.ssh/authorized_keys (should be 600).\n\nRegenerate SSH keys if needed and check the SSH logs with {{command}}logcat -s Termux:SSH{{/command}}.",
+          "example": "{{command}}ps aux | grep sshd{{/command}} - Checks if running.\n{{command}}chmod 700 ~/.ssh{{/command}} - Fixes permissions.",
+          "exercise": "Start the SSH server. Check if it's running. Find your IP address. Check your SSH permissions. If you have issues, view the SSH logs."
         }
       ]
     },
@@ -421,38 +523,57 @@
       "items": [
         {
           "title": "Do I need root access?",
-          "content": "No. Termux works perfectly without root. The vast majority of features work without any root access at all.\n\nRoot access is only needed for certain advanced features like running root-only tools or modifying system files. For everyday use, learning, and development, root is not required.\n\nTermux is designed to work on unrooted devices, and most users never need root.",
-          "exercise": "Try using Termux without root — you'll find almost everything works perfectly. Install packages, create files, and run programs without any root access needed."
+          "content": "No. Termux works perfectly without root. The vast majority of features work without any root access at all.\n\nRoot access is only needed for certain advanced features like running root-only tools or modifying system files. For everyday use, learning, and development, root is not required.",
+          "example": "Installing packages, writing scripts, navigating the file system, and using tools like Git and Python all work perfectly without root.",
+          "exercise": "Try using Termux without root. Install a package, create files, navigate folders. You'll find everything works perfectly."
         },
         {
           "title": "Play Store vs F-Droid?",
-          "content": "Always use the F-Droid version. The Play Store version is no longer maintained and has serious issues.\n\nThe Play Store version is years behind and broken. The F-Droid version is actively maintained, receives regular updates, and has all the latest features and security fixes.\n\nMany users experience crashes and missing features with the Play Store version, which are all fixed in F-Droid.",
-          "exercise": "Check which version you have installed by looking at the app details. If it's from Play Store, uninstall it and reinstall from F-Droid at https://f-droid.org/en/packages/com.termux/."
+          "content": "Always use the F-Droid version. The Play Store version is no longer maintained and has serious issues.\n\nThe Play Store version is years behind and broken. The F-Droid version is actively maintained, receives regular updates, and has all the latest features and security fixes.",
+          "example": "The F-Droid version has a version number like 0.118.0. The Play Store version is stuck on much older versions.",
+          "exercise": "Check which version you have installed. If it's from Play Store, back up your files, uninstall it, and install from F-Droid."
         },
         {
-          "title": "How to update Termux?",
-          "content": "Termux itself is updated through F-Droid, not through the pkg command. Packages inside Termux are updated with pkg.\n\nTo update the Termux app itself, open F-Droid and go to Settings > Updates. Or download the latest APK from F-Droid.\n\nTo update packages inside Termux, run pkg update && pkg upgrade.\n\nKeeping both the app and packages up to date ensures you have the latest features and security fixes.",
-          "exercise": "Check your Termux version with pkg --version. Then check if there's an update available on F-Droid by opening F-Droid and looking for updates. If there's an update, install it. Then run pkg update && pkg upgrade to update your packages."
+          "title": "How to backup my Termux setup?",
+          "content": "Backup your home directory and list of installed packages.\n\nUse tar to create a backup of your home folder. Save the list of installed packages to a file.\n\nCopy both files to your Android shared storage for safe keeping.",
+          "example": "{{command}}tar -czf termux-backup.tar.gz ~/{{/command}} - Creates backup.\n{{command}}pkg list-installed > packages.txt{{/command}} - Saves package list.",
+          "exercise": "Create a backup of your Termux home folder. Save a list of installed packages. Copy both files to your Android storage."
         },
         {
           "title": "How to prevent Android from killing Termux?",
-          "content": "Android may terminate background apps to save battery. Here's how to prevent it.\n\nDisable battery optimization for Termux in Android Settings. Use termux-wake-lock to keep Termux awake. Keep Termux in the foreground by running a long-running command.\n\nYou can also lock Termux in the recents view by opening the recent apps and tapping the lock icon.\n\nThese steps help ensure Termux stays running even when in the background.",
-          "exercise": "Check your battery optimization settings for Termux: Settings > Apps > Termux > Battery > Unrestricted. Install termux-api with pkg install termux-api and use termux-wake-lock to keep Termux awake. Then lock Termux in recent apps by opening recent apps and tapping the lock icon."
+          "content": "Android may terminate background apps to save battery. Here's how to prevent it.\n\nDisable battery optimization for Termux in Android Settings. Use {{command}}termux-wake-lock{{/command}} to keep Termux awake. Keep Termux in the foreground by running a long-running command.\n\nYou can also lock Termux in the recents view by opening the recent apps and tapping the lock icon.",
+          "example": "{{command}}termux-wake-lock{{/command}} - Prevents sleep.\nSettings > Apps > Termux > Battery > Unrestricted - Disables optimization.",
+          "exercise": "Check your battery optimization settings for Termux. Install termux-api and use the wake lock. Lock Termux in the recent apps view."
         },
         {
           "title": "Can I run GUI applications?",
-          "content": "Yes, you can run basic GUI applications using VNC or Termux:X11.\n\nTermux:X11 is a native Android app that provides an X11 server for running GUI apps. You need to install it from F-Droid.\n\nVNC is another option. Install tigervnc, start the server with vncserver, and connect with a VNC viewer app to localhost:5901.\n\nRunning GUI apps allows you to use graphical applications like text editors and development tools.",
-          "exercise": "Install tigervnc with pkg install tigervnc. Start a VNC server with vncserver. Connect to it using a VNC viewer app on your phone or computer. Then install a GUI app like nano with pkg install nano and open it with export DISPLAY=:1 && nano."
+          "content": "Yes, you can run basic GUI applications using VNC or Termux:X11.\n\nTermux:X11 is a native Android app that provides an X11 server for running GUI apps. You need to install it from F-Droid.\n\nVNC is another option. Install tigervnc, start the server with {{command}}vncserver{{/command}}, and connect with a VNC viewer app to localhost:5901.",
+          "example": "{{command}}vncserver{{/command}} - Starts VNC server.\n{{command}}vncserver -kill :1{{/command}} - Stops it.",
+          "exercise": "Install tigervnc. Start a VNC server. Connect to it with a VNC viewer app. Install a GUI package and launch it through VNC."
         },
         {
           "title": "How to change the default shell?",
-          "content": "The default shell is Bash. You can switch to Zsh for more features like better auto-completion and theming.\n\nInstall Zsh with pkg install zsh, then change your default shell with chsh -s zsh. Restart Termux for the change to take effect.\n\nTo change back to Bash, run chsh -s bash. You can see available shells with cat /etc/shells.\n\nZsh offers a more modern and feature-rich experience compared to Bash.",
-          "exercise": "Install Zsh with pkg install zsh. Change your default shell with chsh -s zsh. Restart Termux. See available shells with cat /etc/shells. To change back to Bash, run chsh -s bash."
+          "content": "The default shell is Bash. You can switch to Zsh for more features like better auto-completion and theming.\n\nInstall Zsh with {{command}}pkg install zsh{{/command}}, then change your default shell with {{command}}chsh -s zsh{{/command}}. Restart Termux for the change to take effect.\n\nTo change back to Bash, run {{command}}chsh -s bash{{/command}}. You can see available shells with {{command}}cat /etc/shells{{/command}}.",
+          "example": "{{command}}chsh -s zsh{{/command}} - Changes to Zsh.\n{{command}}chsh -s bash{{/command}} - Changes back to Bash.",
+          "exercise": "Install Zsh. Change your default shell to Zsh. Restart Termux. See available shells. Change back to Bash if you prefer."
+        },
+        {
+          "title": "How to update Termux itself?",
+          "content": "Termux is updated through F-Droid, not through pkg.\n\nTo update the Termux app, open F-Droid and go to Settings > Updates. Or download the latest APK from F-Droid.\n\nTo update packages inside Termux, run {{command}}pkg update && pkg upgrade{{/command}}.",
+          "example": "{{command}}pkg --version{{/command}} - Shows Termux version.\nOpen F-Droid to check for app updates.",
+          "exercise": "Check your Termux version. Check F-Droid for app updates. Update your packages inside Termux."
+        },
+        {
+          "title": "How to fix 'Cannot connect to repository' error?",
+          "content": "This usually means your repository mirror is down.\n\nQuick fix: {{command}}termux-change-repo{{/command}} and select a different mirror.\n\nIf that fails: {{command}}pkg clean{{/command}} and {{command}}rm -rf $PREFIX/var/lib/apt/lists/*{{/command}} then {{command}}pkg update{{/command}}.",
+          "example": "{{command}}termux-change-repo{{/command}} - Changes mirror.\n{{command}}rm -rf $PREFIX/var/lib/apt/lists/*{{/command}} - Resets repositories.",
+          "exercise": "Change your repository mirror using termux-change-repo. If it doesn't work, reset your repositories and try again."
         },
         {
           "title": "How to access Termux from PC without USB?",
-          "content": "Use SSH to access Termux remotely from your computer over WiFi.\n\nOn your phone, install openssh and start the server with sshd. Find your phone's IP address with ifconfig.\n\nOn your computer, connect with ssh -p 8022 username@phone_ip. Transfer files with scp -P 8022 file.txt username@phone_ip:~/\n\nThis is the most common way to access Termux remotely and is secure and fast.",
-          "exercise": "Set up SSH on your phone: pkg install openssh, sshd. Find your IP with ifconfig. From your computer: ssh -p 8022 username@phone_ip. Then set up passwordless login: on your computer, generate an SSH key with ssh-keygen -t rsa, then copy it with ssh-copy-id -p 8022 username@phone_ip."
+          "content": "Use SSH to access Termux remotely from your computer over WiFi.\n\nOn your phone, install openssh and start the server with {{command}}sshd{{/command}}. Find your phone's IP address with {{command}}ifconfig{{/command}}.\n\nOn your computer, connect with {{command}}ssh -p 8022 username@phone_ip{{/command}}. Transfer files with {{command}}scp -P 8022 file.txt username@phone_ip:~/.{{/command}}",
+          "example": "{{command}}ssh -p 8022 user@192.168.1.105{{/command}} - Connects from PC.\n{{command}}scp -P 8022 file.txt user@phone:~/.{{/command}} - Transfers file.",
+          "exercise": "Install openssh and start the server. Find your phone's IP. Connect from your computer. Set up passwordless login with SSH keys."
         }
       ]
     }

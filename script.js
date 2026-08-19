@@ -3,11 +3,64 @@ let currentMode = 'main';
 let currentSection = null;
 let isLessonView = false;
 
-const contentContainer = document.getElementById('contentContainer');
-const backButtonContainer = document.getElementById('backButtonContainer');
-const copyToast = document.getElementById('copyToast');
-const navBeginner = document.getElementById('navBeginner');
-const navMain = document.getElementById('navMain');
+function renderApp() {
+  const app = document.getElementById('app');
+  app.innerHTML = `
+    <nav class="navbar">
+      <div class="navbar-left" onclick="goHome()">
+        <img src="favicon.svg" alt="Termux" class="navbar-logo">
+        <span class="navbar-title">Termux <span class="highlight">Mastery</span></span>
+      </div>
+      <div class="navbar-right">
+        <a href="https://github.com/incognito-dev07/termux-mastery" target="_blank" aria-label="GitHub Repository">
+          <i class="fab fa-github"></i>
+        </a>
+      </div>
+    </nav>
+    <div class="app">
+      <div id="backButtonContainer"></div>
+      <main class="main">
+        <div class="container"><div id="contentContainer"></div></div>
+      </main>
+      <footer class="footer">
+        <p>Download Termux on <a href="https://f-droid.org/en/packages/com.termux/" target="_blank">F-Droid</a> · <a href="https://github.com/termux/termux-app" target="_blank">GitHub</a></p>
+      </footer>
+    </div>
+    <div class="floating-nav" id="floatingNav">
+      <button id="navMain" class="active"><i class="fas fa-book"></i> Main</button>
+      <button id="navBeginner"><i class="fas fa-graduation-cap"></i> Beginner</button>
+      <button class="scroll-btn" onclick="scrollToTop()"><i class="fas fa-arrow-up"></i></button>
+    </div>
+  `;
+  
+  contentContainer = document.getElementById('contentContainer');
+  backButtonContainer = document.getElementById('backButtonContainer');
+  copyToast = document.getElementById('copyToast');
+  navBeginner = document.getElementById('navBeginner');
+  navMain = document.getElementById('navMain');
+  
+  navMain.addEventListener('click', function() {
+    if (currentMode === 'main') return;
+    currentMode = 'main';
+    currentSection = null;
+    isLessonView = false;
+    updateUrl({ mode: 'main', section: null });
+    updateNav();
+    loadData();
+  });
+
+  navBeginner.addEventListener('click', function() {
+    if (currentMode === 'beginner') return;
+    currentMode = 'beginner';
+    currentSection = null;
+    isLessonView = false;
+    updateUrl({ mode: 'beginner', section: null });
+    updateNav();
+    loadData();
+  });
+}
+
+let contentContainer, backButtonContainer, copyToast, navBeginner, navMain;
 
 async function loadData() {
   try {
@@ -36,13 +89,23 @@ function escapeHtml(str) { if (!str) return ''; return str.replace(/[&<>]/g, fun
 
 function highlightCommands(text) {
   if (!text) return '';
-  let escaped = escapeHtml(text);
-  // Highlight commands like pkg, ls, cd, etc.
-  const cmdRegex = /\b(pkg|apt|ls|cd|pwd|mkdir|touch|cat|cp|mv|rm|echo|nano|vim|git|ssh|wget|curl|python|node|npm|pip|termux-setup-storage|termux-change-repo|chsh|source|history|man|ping|ifconfig|ip|scp|rsync|nmap|traceroute|dig|nslookup|vncserver|sshd|passwd|whoami|head|tail|less|tree|htop|grep|find|chmod|chown|kill|ps|top|df|du|tar|gzip|unzip|make|gcc|clang|java|ruby|perl|go|rustc|swiftc|deno|bun|yarn|pnpm|composer|pip3|virtualenv|conda|jupyter|flask|django|express|react|vue|angular|next|nuxt|svelte|astro|solid|qwik|remix|gatsby|eleventy|hugo|jekyll|hexo|vitepress|docsify|mkdocs|sphinx|pandoc|latex|pdflatex|bibtex|makeindex|tex|dotnet|mono|fsharp|haskell|ghc|erlang|elixir|mix|rebar|phoenix|laravel|symfony|rails|sidekiq|puma|unicorn|nginx|apache|caddy|traefik|envoy|haproxy|keepalived|pacemaker|corosync|docker|podman|buildah|skopeo|kubectl|helm|istio|linkerd|consul|vault|nomad|terraform|packer|vagrant|ansible|puppet|chef|salt|stackstorm|nagios|prometheus|grafana|zabbix|elk|elasticsearch|logstash|kibana|filebeat|metricbeat|auditbeat|heartbeat|packetbeat|journalctl|systemctl|service|chkconfig|update-rc.d|rc-update|sysctl|modprobe|insmod|rmmod|lsmod|dmesg|fdisk|mkfs|mount|umount|blkid|lsblk|parted|gparted|resize2fs|xfs_growfs|xfs_info|lvm|pvcreate|vgcreate|lvcreate|vgextend|lvextend|lvreduce|pvmove|vgreduce|lvremove|pvremove|vgremove|lvdisplay|pvdisplay|vgdisplay)\b/g;
-  escaped = escaped.replace(cmdRegex, '<span class="cmd-highlight">$1</span>');
-  // Highlight flags like -l, --help
-  escaped = escaped.replace(/\b(-[a-zA-Z]|--[a-zA-Z-]+)\b/g, '<span class="cmd-highlight">$1</span>');
-  return escaped;
+  
+  let result = text.replace(/\{\{command\}\}/g, '<span class="cmd-highlight">');
+  result = result.replace(/\{\{\/command\}\}/g, '</span>');
+  
+  const placeholders = [];
+  result = result.replace(/<span class="cmd-highlight">.*?<\/span>/g, function(match) {
+    placeholders.push(match);
+    return '%%%PLACEHOLDER%%%';
+  });
+  
+  result = escapeHtml(result);
+  
+  placeholders.forEach(function(placeholder, index) {
+    result = result.replace('%%%PLACEHOLDER%%%', placeholder);
+  });
+  
+  return result;
 }
 
 function scrollToTop() { window.scrollTo({ top: 0, behavior: 'smooth' }); }
@@ -70,42 +133,23 @@ function goHome() {
   isLessonView = false;
   renderTopics();
 }
+window.goHome = goHome;
 
 function updateNav() {
   if (currentMode === 'main') { navMain.classList.add('active'); navBeginner.classList.remove('active'); }
   else { navBeginner.classList.add('active'); navMain.classList.remove('active'); }
 }
 
-navMain.addEventListener('click', function() {
-  if (currentMode === 'main') return;
-  currentMode = 'main';
-  currentSection = null;
-  isLessonView = false;
-  updateUrl({ mode: 'main', section: null });
-  updateNav();
-  loadData();
-});
-
-navBeginner.addEventListener('click', function() {
-  if (currentMode === 'beginner') return;
-  currentMode = 'beginner';
-  currentSection = null;
-  isLessonView = false;
-  updateUrl({ mode: 'beginner', section: null });
-  updateNav();
-  loadData();
-});
-
 function renderBeginnerBanner() {
   return `
-    <div class="section-container" id="section-beginner-guide">
+    <div class="section-container" id="section-beginner-guide" style="margin-bottom:12px;">
       <div class="section-header">
         <div class="icon-wrap"><i class="fas fa-rocket"></i></div>
         <h2>Start Here — Beginner Track</h2>
         <span class="count">4 lessons</span>
       </div>
       <div style="padding:16px 20px 20px;">
-        <p style="color:var(--text-secondary);margin-bottom:14px;font-size:14px;line-height:1.7;">Never used a terminal? This track walks you through everything from scratch — no prior knowledge needed.</p>
+        <p style="color:var(--text-secondary);margin-bottom:14px;font-size:14px;line-height:1.7;">Never used a terminal? This track walks you through the basics without any prior knowledge.</p>
         <button class="goto-beginner-btn" onclick="switchToBeginner()">
           <span><i class="fas fa-arrow-right"></i> Launch Beginner Course</span>
           <i class="fas fa-chevron-right"></i>
@@ -166,6 +210,7 @@ function openSection(sectionId) {
     renderLessons(sectionId);
   }
 }
+window.openSection = openSection;
 
 function renderLessons(sectionId) {
   const section = tutorialData[sectionId];
@@ -195,10 +240,10 @@ function renderLessons(sectionId) {
 
 function renderItem(item, index) {
   const hasExercise = item.exercise && item.exercise.trim();
+  const hasExample = item.example && item.example.trim();
   
   let contentHtml = '';
   
-  // Content (lesson explanation)
   if (item.content) {
     const paragraphs = item.content.split('\n\n');
     paragraphs.forEach(p => {
@@ -208,11 +253,25 @@ function renderItem(item, index) {
     });
   }
   
-  // Exercise
+  if (hasExample) {
+    // Split examples by newline and wrap each in a span with line break
+    const exampleLines = item.example.split('\n').filter(line => line.trim());
+    const formattedExample = exampleLines.map(line => {
+      return highlightCommands(line.trim());
+    }).join('<br>');
+    
+    contentHtml += `
+      <div class="example-box">
+        <h4><i class="fas fa-code"></i> Example</h4>
+        <p>${formattedExample}</p>
+      </div>
+    `;
+  }
+  
   if (hasExercise) {
     contentHtml += `
       <div class="exercise-box">
-        <h4><i class="fas fa-pencil-alt"></i> Try It Yourself</h4>
+        <h4><i class="fas fa-pencil-alt"></i> Exercise</h4>
         <p>${escapeHtml(item.exercise)}</p>
       </div>
     `;
@@ -229,13 +288,12 @@ function renderItem(item, index) {
   `;
 }
 
-window.toggleCommand = function(header) {
+function toggleCommand(header) {
   const card = header.closest('.command-card');
   card.classList.toggle('expanded');
-};
+}
+window.toggleCommand = toggleCommand;
 
-window.openSection = openSection;
-window.goHome = goHome;
-window.scrollToTop = scrollToTop;
-
+// Initialize
+renderApp();
 loadData();
