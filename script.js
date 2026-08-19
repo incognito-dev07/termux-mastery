@@ -254,7 +254,6 @@ function renderItem(item, index) {
   }
   
   if (hasExample) {
-    // Split examples by newline and wrap each in a span with line break
     const exampleLines = item.example.split('\n').filter(line => line.trim());
     const formattedExample = exampleLines.map(line => {
       return highlightCommands(line.trim());
@@ -294,6 +293,5 @@ function toggleCommand(header) {
 }
 window.toggleCommand = toggleCommand;
 
-// Initialize
 renderApp();
 loadData();
