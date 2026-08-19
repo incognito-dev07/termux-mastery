@@ -2,7 +2,7 @@
   "version": 2,
   "routes": [
     {
-      "src": "/(favicon.svg|lessons.json|script.js)",
+      "src": "/(favicon.svg|lessons.json|script.js|style.css)",
       "dest": "/$1"
     },
     {
